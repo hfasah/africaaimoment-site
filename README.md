@@ -10,7 +10,7 @@ Redirect africaaimoment.africa → africaaimoment.com at your registrar.
 |---|---|
 | Amazon / Tellwell pre-order link | every `href="https://www.amazon.com/"` (hero button + final CTA + thank-you page) |
 | Author photo | drop your blue-blazer photo at `assets/hippolyte.jpg` (square crop, ≥600px) |
-| Bonus Report PDF (manuscript pp. 213–219) | `assets/Africa-G7-AI-Preparedness-Gap-2026.pdf` |
+| Bonus Report PDF | already built at `assets/Africa-G7-AI-Preparedness-Gap-2026.pdf`; edit `report/bonus-report.html` and re-render to change |
 | Email capture | replace the `<form>` in the "Free Bonus Report" card with your ConvertKit / Mailchimp embed, or set its `action` to their endpoint and redirect to `thank-you.html` |
 | Podcast link | footer `The Smart Office Podcast` `href="#"` |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
