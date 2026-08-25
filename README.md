@@ -1,8 +1,8 @@
 # africaaimoment.com — landing page
 
-Static site, no build step. Upload the whole `website/` folder to any host
-(Netlify Drop, Cloudflare Pages, GoDaddy, Vercel) and point africaaimoment.com at it.
-Redirect africaaimoment.africa → africaaimoment.com at your registrar.
+Static site, no build step. Hosted on **Vercel** (auto-deploys from `main`); `vercel.json` handles
+www/.africa → africaaimoment.com redirects, clean URLs (`/thank-you`) and caching.
+`.htaccess` is kept only for cPanel-style hosts and is ignored by Vercel.
 
 ## Before going live — find-and-replace in `index.html` / `thank-you.html`
 
