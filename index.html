@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://africaaimoment.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy-900:#050c1f; --navy-800:#0a1631; --navy-700:#112247; --navy-600:#1a3160;
@@ -124,6 +124,66 @@
   .magnet input{font-family:var(--sans);font-size:1rem;padding:15px 16px;border:1.5px solid var(--navy-on-cream);border-radius:2px;background:#fff;color:var(--navy-900);width:100%}
   .magnet input:focus{outline:2px solid var(--gold);outline-offset:1px}
   .magnet .fine{font-size:.78rem;color:#6a7390;margin-top:10px}
+
+
+  /* ===== COUNTRY EXPLORER (terminal) ===== */
+  .term-sec{background:#0B1E3A;border-top:1px solid rgba(212,175,55,.25);border-bottom:1px solid rgba(212,175,55,.25)}
+  .term{--tg:#D4AF37;--tg2:#f0d77a;--tbg:#071528;--tline:rgba(212,175,55,.22);--tdim:#7d8aa8;--tgreen:#3ddc97;--tred:#ff6b6b;font-family:'IBM Plex Mono','SF Mono',Menlo,Consolas,monospace;background:var(--tbg);border:1px solid var(--tline);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.02);position:relative;overflow:hidden}
+  .term::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+  .term-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:#0B1E3A;border-bottom:1px solid var(--tline);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tg)}
+  .term-bar .dots{display:flex;gap:6px}.term-bar .dots i{width:9px;height:9px;border-radius:50%;background:var(--tline)}.term-bar .dots i:first-child{background:var(--tg)}
+  .term-bar .live{color:var(--tgreen)}.term-bar .live::before{content:"●";margin-right:6px;animation:blink 1.4s infinite}
+  @keyframes blink{50%{opacity:.25}}
+  .term-body{display:grid;grid-template-columns:300px 1fr;min-height:520px}
+  .term-left{border-right:1px solid var(--tline);display:flex;flex-direction:column}
+  .term-search{padding:14px;border-bottom:1px solid var(--tline);position:relative}
+  .term-search label{display:block;font-size:.66rem;letter-spacing:.2em;color:var(--tdim);margin-bottom:8px}
+  .term-search .field{display:flex;align-items:center;gap:8px;border:1px solid var(--tg);background:#04101f;padding:10px 12px}
+  .term-search .field span{color:var(--tg)}
+  .term-search input{flex:1;background:transparent;border:0;color:var(--ink);font:inherit;font-size:.95rem;outline:none;min-width:0}
+  .term-search input::placeholder{color:var(--tdim)}
+  .term-list{overflow-y:auto;max-height:420px;flex:1;scrollbar-width:thin;scrollbar-color:var(--tline) transparent}
+  .term-list .grp{padding:8px 14px 4px;font-size:.62rem;letter-spacing:.2em;color:var(--tdim);position:sticky;top:0;background:var(--tbg)}
+  .term-list button{display:flex;justify-content:space-between;width:100%;background:none;border:0;border-left:2px solid transparent;color:var(--ink-muted);font:inherit;font-size:.82rem;text-align:left;padding:7px 14px;cursor:pointer}
+  .term-list button:hover,.term-list button.on{background:rgba(212,175,55,.08);color:var(--ink);border-left-color:var(--tg)}
+  .term-list button b{font-weight:500;color:var(--tg2)}
+  .term-list button.on b{color:var(--tg)}
+  .term-main{padding:22px 26px;display:flex;flex-direction:column;gap:18px}
+  .term-empty{margin:auto;text-align:center;color:var(--tdim);font-size:.85rem;line-height:1.9}
+  .term-empty b{display:block;font-size:1.4rem;color:var(--tg);font-weight:500}
+  .cur{display:inline-block;width:.6em;height:1.05em;background:var(--tg);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+  .term-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:1px solid var(--tline);padding-bottom:14px}
+  .term-head h3{font-family:var(--display);font-size:clamp(2rem,3.6vw,3rem);line-height:.95;color:var(--ink);letter-spacing:.02em}
+  .term-head .rk{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tdim)}
+  .term-head .rk b{color:var(--tg);font-weight:500}
+  .tag-src{font-size:.6rem;letter-spacing:.18em;padding:3px 8px;border:1px solid var(--tg);color:var(--tg);vertical-align:middle;margin-left:10px}
+  .tag-src.est{border-color:var(--tdim);color:var(--tdim)}
+  .term-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--tline);border:1px solid var(--tline)}
+  .term-grid .cell{background:var(--tbg);padding:14px 14px 12px}
+  .cell .k{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tdim);white-space:nowrap}
+  .cell .v{font-size:1.75rem;font-weight:500;color:var(--ink);margin:6px 0 2px;font-variant-numeric:tabular-nums;line-height:1}
+  .cell .v small{font-size:.8rem;color:var(--tdim);font-weight:400}
+  .cell.big .v{color:var(--tg)}
+  .cell .d{font-size:.7rem;font-variant-numeric:tabular-nums}
+  .d.up{color:var(--tgreen)}.d.dn{color:var(--tred)}.d.flat{color:var(--tdim)}
+  .term-chart{border:1px solid var(--tline);padding:16px 18px 14px}
+  .term-chart .t{display:flex;justify-content:space-between;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tdim);margin-bottom:12px}
+  .term-chart .lg{display:flex;gap:14px}.term-chart .lg i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+  .c-row{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center;margin:8px 0}
+  .c-row .n{font-size:.72rem;color:var(--ink-muted);letter-spacing:.04em}
+  .c-bars{display:grid;gap:3px}
+  .c-bar{display:grid;grid-template-columns:1fr 40px;gap:8px;align-items:center;height:12px}
+  .c-bar i{display:block;height:100%;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1);background:var(--c)}
+  .c-bar em{font-style:normal;font-size:.66rem;color:var(--tdim);font-variant-numeric:tabular-nums;text-align:right}
+  .c-sel{--c:var(--tg)}.c-g7{--c:#c9d3e6}.c-af{--c:#3a5a8a}
+  .term-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;border-top:1px solid var(--tline);padding-top:16px}
+  .term-foot .note{font-size:.66rem;line-height:1.6;color:var(--tdim);max-width:520px}
+  .term-foot .note b{color:var(--tg);font-weight:500}
+  .term .btn{font-family:var(--sans)}
+  .share{background:none;border:1px solid var(--tline);color:var(--tdim);font:inherit;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+  .share:hover{border-color:var(--tg);color:var(--tg)}
+  @media(max-width:980px){.term-body{grid-template-columns:1fr}.term-left{border-right:0;border-bottom:1px solid var(--tline)}.term-list{max-height:220px}.term-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.term-main{padding:16px}.term-grid{grid-template-columns:1fr 1fr}.term-grid .cell:first-child{grid-column:1/-1}.term-grid .cell:last-child{grid-column:1/-1}.term-bar{font-size:.6rem;gap:8px}.term-bar span:nth-child(2){white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.term-chart .t{flex-wrap:wrap;gap:8px}.c-row{grid-template-columns:1fr}.term-head h3{font-size:2rem}}
 
   /* ===== BUILD ===== */
   .build{background:var(--cream);color:var(--navy-on-cream)}
@@ -311,6 +371,37 @@
   </div>
 </section>
 
+<!-- ================= COUNTRY EXPLORER ================= -->
+<section class="sec term-sec" id="readiness">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations</div>
+      <h2>Check your country's<br>AI readiness gap.</h2>
+      <p>Pick a country. See where it stands on readiness, infrastructure, talent and data — against the G7 average and the African average.</p>
+    </div>
+
+    <div class="term rv" role="region" aria-label="AI readiness explorer">
+      <div class="term-bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>AAIM · AI READINESS TERMINAL · IMF AIPI SCALE 0–1</span>
+        <span class="live">Live</span>
+      </div>
+      <div class="term-body">
+        <div class="term-left">
+          <div class="term-search">
+            <label for="cty-q">Search 61 countries</label>
+            <div class="field"><span>&gt;</span><input id="cty-q" type="search" placeholder="Type a country…" autocomplete="off" spellcheck="false"></div>
+          </div>
+          <div class="term-list" id="cty-list" role="listbox"></div>
+        </div>
+        <div class="term-main" id="cty-main">
+          <div class="term-empty"><b>SELECT A COUNTRY<span class="cur"></span></b>or try <a href="#" data-pick="Kenya" style="color:var(--tg)">Kenya</a> · <a href="#" data-pick="Nigeria" style="color:var(--tg)">Nigeria</a> · <a href="#" data-pick="Ghana" style="color:var(--tg)">Ghana</a> · <a href="#" data-pick="South Africa" style="color:var(--tg)">South Africa</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= BUILD FRAMEWORK ================= -->
 <section class="sec build" id="build">
   <div class="wrap">
@@ -443,6 +534,69 @@
   <a class="btn btn-ghost" href="#signup">Free Report</a>
 </div>
 
+
+<script src="assets/ai-data.js"></script>
+<script>
+(function(){
+  const D = window.AI_DATA || {}; const names = Object.keys(D);
+  const af = names.filter(n=>D[n].region==='Africa'), g7 = names.filter(n=>D[n].region==='G7');
+  const avg = (arr,k)=>arr.reduce((s,n)=>s+D[n][k],0)/arr.length;
+  const AF = {readiness:avg(af,'readiness'),infra:avg(af,'infra'),talent:avg(af,'talent'),data:avg(af,'data')};
+  const G7 = {readiness:avg(g7,'readiness'),infra:avg(g7,'infra'),talent:avg(g7,'talent'),data:avg(g7,'data')};
+  const rankAf = [...af].sort((a,b)=>D[b].readiness-D[a].readiness);
+  const list = document.getElementById('cty-list'), main = document.getElementById('cty-main'), q = document.getElementById('cty-q');
+  const slug = s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const f2 = v=>v.toFixed(2);
+  function renderList(filter){
+    const fl = (filter||'').toLowerCase();
+    const group = (title, arr)=>{
+      const items = arr.filter(n=>n.toLowerCase().includes(fl));
+      if(!items.length) return '';
+      return `<div class="grp">${title} · ${items.length}</div>` + items.map(n=>`<button role="option" data-pick="${n}" class="${n===cur?'on':''}"><span>${n}</span><b>${f2(D[n].readiness)}</b></button>`).join('');
+    };
+    list.innerHTML = group('Africa', rankAf) + group('G7', [...g7].sort((a,b)=>D[b].readiness-D[a].readiness)) || '<div class="grp">No match</div>';
+  }
+  let cur = null;
+  function delta(v, ref){ const d=v-ref; const cls=d>0.005?'up':d<-0.005?'dn':'flat'; return `<div class="d ${cls}">${d>0?'+':''}${f2(d)} vs G7</div>`; }
+  function bars(label,k){
+    const s=D[cur][k];
+    return `<div class="c-row"><div class="n">${label}</div><div class="c-bars">
+      <div class="c-bar c-sel"><i data-w="${s*100}"></i><em>${f2(s)}</em></div>
+      <div class="c-bar c-g7"><i data-w="${G7[k]*100}"></i><em>${f2(G7[k])}</em></div>
+      <div class="c-bar c-af"><i data-w="${AF[k]*100}"></i><em>${f2(AF[k])}</em></div></div></div>`;
+  }
+  function show(n, push){
+    if(!D[n]) return; cur=n; const c=D[n]; const isG7=c.region==='G7';
+    const rank = isG7 ? `G7 rank <b>#${[...g7].sort((a,b)=>D[b].readiness-D[a].readiness).indexOf(n)+1} / 7</b>` : `Africa rank <b>#${rankAf.indexOf(n)+1} / ${af.length}</b>`;
+    const pct = Math.round(c.readiness/G7.readiness*100);
+    main.innerHTML = `
+      <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Est.'}</span></h3></div>
+        <div class="rk">${rank} &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness</div></div>
+      <div class="term-grid">
+        <div class="cell big"><div class="k">AI readiness</div><div class="v">${f2(c.readiness)}<small> /1.0</small></div>${delta(c.readiness,G7.readiness)}</div>
+        <div class="cell"><div class="k">Infrastructure</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
+        <div class="cell"><div class="k">Talent</div><div class="v">${f2(c.talent)}</div>${delta(c.talent,G7.talent)}</div>
+        <div class="cell"><div class="k">Data ecosystems</div><div class="v">${f2(c.data)}</div>${delta(c.data,G7.data)}</div>
+        <div class="cell"><div class="k">Funding gap vs G7</div><div class="v">${isG7?'—':'$'+c.gap.toFixed(1)+'<small>B</small>'}</div><div class="d flat">${isG7?'benchmark':'placeholder est.'}</div></div>
+      </div>
+      <div class="term-chart"><div class="t"><span>Readiness by pillar</span><span class="lg"><span><i style="background:var(--tg)"></i>${n}</span><span><i style="background:#c9d3e6"></i>G7 avg</span><span><i style="background:#3a5a8a"></i>Africa avg</span></span></div>
+        ${bars('Overall','readiness')}${bars('Infrastructure','infra')}${bars('Talent','talent')}${bars('Data ecosystems','data')}</div>
+      <div class="term-foot"><div class="note"><b>${c.source==='audit'?'Audit figure':'Preliminary estimate'}</b> — ${c.source==='audit'?'IMF AI Preparedness Index values from the book’s Bonus Report.':'placeholder pending the final audit; final scores average the IMF AIPI, Oxford Insights Government AI Readiness Index and World Bank Digital Adoption Index.'} Funding gap is an illustrative estimate in US$ billions.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="share" data-share>Copy link</button><a class="btn btn-gold" href="#preorder">See the full breakdown in Chapter 3 — Pre-order</a></div></div>`;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>main.querySelectorAll('.c-bar i').forEach(i=>i.style.width=i.dataset.w+'%')));
+    renderList(q.value);
+    if(push!==false) history.replaceState(null,'','#readiness/'+slug(n));
+  }
+  document.addEventListener('click',e=>{
+    const p=e.target.closest('[data-pick]'); if(p){e.preventDefault(); show(p.dataset.pick); main.scrollIntoView({behavior:'smooth',block:'nearest'}); return;}
+    const s=e.target.closest('[data-share]'); if(s){ navigator.clipboard&&navigator.clipboard.writeText(location.origin+location.pathname+'#readiness/'+slug(cur)); s.textContent='Link copied'; setTimeout(()=>s.textContent='Copy link',1800); }
+  });
+  q.addEventListener('input',()=>renderList(q.value));
+  q.addEventListener('keydown',e=>{ if(e.key==='Enter'){ const b=list.querySelector('button'); if(b) show(b.dataset.pick); } });
+  renderList('');
+  const m=location.hash.match(/^#readiness\/([a-z0-9-]+)/); if(m){ const n=names.find(x=>slug(x)===m[1]); if(n){ show(n,false); setTimeout(()=>document.getElementById('readiness').scrollIntoView(),50); } }
+})();
+</script>
 <script>
   // Scroll reveal
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } }), { threshold: .15 });
