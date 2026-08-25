@@ -22,8 +22,9 @@ I wrote this audit while finishing my book, *Africa's AI Moment: From Consumers 
 
 The report is the diagnosis. The book is the plan.
 
-**Pre-order Africa's AI Moment — $27.99**
-{{preorder_link}}
+**You're on the pre-order waitlist.** The moment Amazon and Tellwell open ordering this fall, you'll be the first to know — with launch-week pricing.
+
+{{preorder_link — add the Amazon/Tellwell link here once live}}
 
 You're now on the launch list, which means you'll get launch-week pricing and an early look at the first chapters before the paperback ships this fall. I'll email a handful of times before then — never more than that.
 

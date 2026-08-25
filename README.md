@@ -8,13 +8,13 @@ Redirect africaaimoment.africa → africaaimoment.com at your registrar.
 
 | What | Where |
 |---|---|
-| Amazon / Tellwell pre-order link | every `href="https://www.amazon.com/"` (hero button + final CTA + thank-you page) |
+| Amazon / Tellwell pre-order link | not yet live: all pre-order buttons say "Join Waitlist" and point to `#signup`. When the link arrives, change the hero button, final CTA, sticky mobile bar, explorer CTA, and the thank-you upsell |
 | Author photo | drop your blue-blazer photo at `assets/hippolyte.jpg` (square crop, ≥600px) |
 | Bonus Report PDF | already built at `assets/Africa-G7-AI-Preparedness-Gap-2026.pdf`; edit `report/bonus-report.html` and re-render to change |
-| Email capture | replace the `<form>` in the "Free Bonus Report" card with your ConvertKit / Mailchimp embed, or set its `action` to their endpoint and redirect to `thank-you.html` |
+| Email capture | ConvertKit (Kit): create a form, then set `data-ck-form="FORM_ID"` on `<form id="waitlist">` — the page POSTs to Kit with `first_name` and a custom field `country`. Until then, signups are stored in the visitor's browser only (open DevTools → localStorage → `aaim_waitlist`) |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
 | Launch date | badge on the cover says `Fall 2026` |
-| Price | `$27.99` appears in the hero button and on the thank-you page |
+| Explorer data | `assets/ai-data.js` — Oxford Insights 2025 pillar scores for 61 countries (preliminary). Replace with the final audit; keep field names |
 
 ## Email sequence (set up in ConvertKit/Mailchimp)
 

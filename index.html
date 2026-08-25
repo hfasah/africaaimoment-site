@@ -122,7 +122,12 @@
   .magnet li::before{content:"◆";position:absolute;left:4px;color:var(--gold-dim);font-size:.7rem;top:13px}
   .magnet form{display:grid;gap:10px}
   .magnet input{font-family:var(--sans);font-size:1rem;padding:15px 16px;border:1.5px solid var(--navy-on-cream);border-radius:2px;background:#fff;color:var(--navy-900);width:100%}
-  .magnet input:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .magnet input:focus,.magnet select:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .magnet select{font-family:var(--sans);font-size:1rem;padding:15px 16px;border:1.5px solid var(--navy-on-cream);border-radius:2px;background:#fff;color:var(--navy-900);width:100%;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230a1631' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .magnet select:invalid{color:#6a7390}
+  .form-msg{display:none;font-family:var(--serif);font-size:1.05rem;line-height:1.4;color:var(--navy-on-cream);padding:12px 14px;background:var(--gold-tint,#fbf3dc);border-left:3px solid var(--gold)}
+  .form-msg.show{display:block}.form-msg a{color:var(--navy-on-cream);font-weight:600}
+  .form-msg.err{border-color:#c0392b;background:#fdecea}
   .magnet .fine{font-size:.78rem;color:#6a7390;margin-top:10px}
 
 
@@ -292,7 +297,7 @@
   <div class="net"></div>
   <div class="wrap hero-grid">
     <div class="cover-wrap">
-      <div class="badge">Pre-Order<span>Fall 2026</span></div>
+      <div class="badge">Coming<span>Fall 2026</span></div>
       <img class="cover" src="assets/cover.jpg" alt="Front cover of Africa's AI Moment by Hippolyte Asah" width="1200" height="1800">
     </div>
     <div class="hero-copy">
@@ -301,7 +306,7 @@
       <p class="sub"><strong>Africa's AI Moment:</strong> From Consumers of Technology to Creators of the Future</p>
       <p class="by">By <b>Hippolyte Asah</b> — Toronto-based AI leader, entrepreneur, founder of JobsAI, and host of The Smart Office Podcast.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="#preorder" id="cta-preorder">Pre-Order Now <small>· $27.99</small></a>
+        <a class="btn btn-gold" href="#signup" id="cta-preorder">Pre-Order Coming Soon — Join Waitlist</a>
         <a class="btn btn-ghost" href="#report">Get the Bonus Report — Free</a>
       </div>
       <p class="formats">Available in <b>paperback</b>, <b>ebook</b>, and <b>bulk orders</b> for universities &amp; organizations.</p>
@@ -359,13 +364,15 @@
           <li>A 5-year action plan for governments, founders, and the diaspora</li>
           <li>Launch-week pricing and early access to the book</li>
         </ul>
-        <!-- Replace action with your ConvertKit / Mailchimp form endpoint -->
-        <form action="#" method="post" onsubmit="return handleSignup(event)">
-          <input type="text" name="name" placeholder="Your first name" autocomplete="given-name">
-          <input type="email" name="email" placeholder="Your best email" required autocomplete="email">
+        <!-- ConvertKit (Kit): set data-ck-form to your form ID and the script below will POST to Kit. Until then, signups are stored in this browser (localStorage) for demo. -->
+        <form id="waitlist" data-ck-form="FORM_ID" novalidate>
+          <input type="text" name="first_name" placeholder="Your first name" autocomplete="given-name">
+          <input type="email" name="email_address" placeholder="Your best email" required autocomplete="email">
+          <select name="fields[country]" required aria-label="Your country"><option value="" disabled selected>Your country</option><optgroup label="Africa"><option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Democratic Republic of the Congo</option><option>Republic of the Congo</option><option>Côte d'Ivoire</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>São Tomé and Príncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option><option>Zimbabwe</option></optgroup><optgroup label="Diaspora &amp; elsewhere"><option>Canada</option><option>United States</option><option>United Kingdom</option><option>France</option><option>Germany</option><option>Italy</option><option>Japan</option><option>Other</option></optgroup></select>
           <button class="btn btn-navy" type="submit">Send Me The Report</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
-        <p class="fine">No spam. One or two emails before launch, then the book news. Unsubscribe any time.</p>
+        <p class="fine">Joining the waitlist gets you the report now, launch-week pricing, and first notice when pre-orders open. No spam. Unsubscribe any time.</p>
       </aside>
     </div>
   </div>
@@ -375,15 +382,15 @@
 <section class="sec term-sec" id="readiness">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations</div>
+      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · preliminary estimates</div>
       <h2>Check your country's<br>AI readiness gap.</h2>
-      <p>Pick a country. See where it stands on readiness, infrastructure, talent and data — against the G7 average and the African average.</p>
+      <p>Pick a country. See where it stands on readiness, infrastructure, talent and governance — against the G7 average and the African average. Preliminary scores from the Oxford Insights Government AI Readiness Index 2025; the book's full audit goes deeper.</p>
     </div>
 
     <div class="term rv" role="region" aria-label="AI readiness explorer">
       <div class="term-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>AAIM · AI READINESS TERMINAL · IMF AIPI SCALE 0–1</span>
+        <span>AAIM · AI READINESS TERMINAL · OXFORD INSIGHTS 2025 · SCALE 0–1</span>
         <span class="live">Live</span>
       </div>
       <div class="term-body">
@@ -492,7 +499,7 @@
     <div class="q2 rv">The question is: who will write it?</div>
     <div class="cta-row rv">
       <!-- Replace hrefs with your Amazon / Tellwell links -->
-      <a class="btn btn-gold" href="https://www.amazon.com/" target="_blank" rel="noopener">Pre-Order Paperback</a>
+      <a class="btn btn-gold" href="#signup">Join the Pre-Order Waitlist</a>
       <a class="btn btn-ghost" href="mailto:hippolyte@africaaimoment.com?subject=Bulk%20order%20inquiry">Bulk Orders for Universities</a>
     </div>
   </div>
@@ -530,7 +537,7 @@
 </footer>
 
 <div class="sticky-cta">
-  <a class="btn btn-gold" href="#preorder">Pre-Order</a>
+  <a class="btn btn-gold" href="#signup">Waitlist</a>
   <a class="btn btn-ghost" href="#signup">Free Report</a>
 </div>
 
@@ -541,8 +548,8 @@
   const D = window.AI_DATA || {}; const names = Object.keys(D);
   const af = names.filter(n=>D[n].region==='Africa'), g7 = names.filter(n=>D[n].region==='G7');
   const avg = (arr,k)=>arr.reduce((s,n)=>s+D[n][k],0)/arr.length;
-  const AF = {readiness:avg(af,'readiness'),infra:avg(af,'infra'),talent:avg(af,'talent'),data:avg(af,'data')};
-  const G7 = {readiness:avg(g7,'readiness'),infra:avg(g7,'infra'),talent:avg(g7,'talent'),data:avg(g7,'data')};
+  const AF = {readiness:avg(af,'readiness'),infra:avg(af,'infra'),talent:avg(af,'talent'),governance:avg(af,'governance')};
+  const G7 = {readiness:avg(g7,'readiness'),infra:avg(g7,'infra'),talent:avg(g7,'talent'),governance:avg(g7,'governance')};
   const rankAf = [...af].sort((a,b)=>D[b].readiness-D[a].readiness);
   const list = document.getElementById('cty-list'), main = document.getElementById('cty-main'), q = document.getElementById('cty-q');
   const slug = s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
@@ -570,19 +577,19 @@
     const rank = isG7 ? `G7 rank <b>#${[...g7].sort((a,b)=>D[b].readiness-D[a].readiness).indexOf(n)+1} / 7</b>` : `Africa rank <b>#${rankAf.indexOf(n)+1} / ${af.length}</b>`;
     const pct = Math.round(c.readiness/G7.readiness*100);
     main.innerHTML = `
-      <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Est.'}</span></h3></div>
-        <div class="rk">${rank} &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness</div></div>
+      <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Prelim.'}</span></h3></div>
+        <div class="rk">${rank} &nbsp;·&nbsp; Global <b>#${c.globalRank} / 195</b> &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness${c.imfAudit?` &nbsp;·&nbsp; Book audit (IMF): <b>${f2(c.imfAudit)}</b>`:''}</div></div>
       <div class="term-grid">
         <div class="cell big"><div class="k">AI readiness</div><div class="v">${f2(c.readiness)}<small> /1.0</small></div>${delta(c.readiness,G7.readiness)}</div>
         <div class="cell"><div class="k">Infrastructure</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
         <div class="cell"><div class="k">Talent</div><div class="v">${f2(c.talent)}</div>${delta(c.talent,G7.talent)}</div>
-        <div class="cell"><div class="k">Data ecosystems</div><div class="v">${f2(c.data)}</div>${delta(c.data,G7.data)}</div>
-        <div class="cell"><div class="k">Funding gap vs G7</div><div class="v">${isG7?'—':'$'+c.gap.toFixed(1)+'<small>B</small>'}</div><div class="d flat">${isG7?'benchmark':'placeholder est.'}</div></div>
+        <div class="cell"><div class="k">Governance</div><div class="v">${f2(c.governance)}</div>${delta(c.governance,G7.governance)}</div>
+        <div class="cell"><div class="k">Funding gap vs G7</div><div class="v">${isG7?'—':'$'+c.gap.toFixed(1)+'<small>B</small>'}</div><div class="d flat">${isG7?'benchmark':'illustrative'}</div></div>
       </div>
       <div class="term-chart"><div class="t"><span>Readiness by pillar</span><span class="lg"><span><i style="background:var(--tg)"></i>${n}</span><span><i style="background:#c9d3e6"></i>G7 avg</span><span><i style="background:#3a5a8a"></i>Africa avg</span></span></div>
-        ${bars('Overall','readiness')}${bars('Infrastructure','infra')}${bars('Talent','talent')}${bars('Data ecosystems','data')}</div>
-      <div class="term-foot"><div class="note"><b>${c.source==='audit'?'Audit figure':'Preliminary estimate'}</b> — ${c.source==='audit'?'IMF AI Preparedness Index values from the book’s Bonus Report.':'placeholder pending the final audit; final scores average the IMF AIPI, Oxford Insights Government AI Readiness Index and World Bank Digital Adoption Index.'} Funding gap is an illustrative estimate in US$ billions.</div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="share" data-share>Copy link</button><a class="btn btn-gold" href="#preorder">See the full breakdown in Chapter 3 — Pre-order</a></div></div>`;
+        ${bars('Overall','readiness')}${bars('Infrastructure','infra')}${bars('Talent','talent')}${bars('Governance','governance')}</div>
+      <div class="term-foot"><div class="note"><b>Preliminary estimate — full audit in the book.</b> Source: Oxford Insights, <a href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/" target="_blank" rel="noopener" style="color:var(--tg)">Government AI Readiness Index 2025</a>. Readiness = equal-weighted mean of its six pillars; Infrastructure = AI Infrastructure pillar; Talent = Development &amp; Diffusion pillar; Governance = Governance pillar; all rescaled 0–1. Funding gap is an illustrative estimate in US$ billions, not a source figure.${c.imfAudit?' Book audit figure is the IMF AI Preparedness Index (a different index) from the Bonus Report.':''}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="share" data-share>Copy link</button><a class="btn btn-gold" href="#signup">See the full breakdown in Chapter 3 — Join Waitlist</a></div></div>`;
     requestAnimationFrame(()=>requestAnimationFrame(()=>main.querySelectorAll('.c-bar i').forEach(i=>i.style.width=i.dataset.w+'%')));
     renderList(q.value);
     if(push!==false) history.replaceState(null,'','#readiness/'+slug(n));
@@ -602,14 +609,27 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } }), { threshold: .15 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // Email capture: swap this for your ConvertKit/Mailchimp embed, or POST to their endpoint.
-  function handleSignup(e) {
-    e.preventDefault();
-    const form = e.target, btn = form.querySelector('button');
-    btn.textContent = 'Check your inbox ✓'; btn.disabled = true;
-    // Example: window.location = 'thank-you.html';
-    return false;
-  }
+  // Waitlist form. With a Kit (ConvertKit) form ID it POSTs to Kit; otherwise stores locally for demo.
+  (function(){
+    const f=document.getElementById('waitlist'); if(!f) return;
+    const msg=f.querySelector('.form-msg'), btn=f.querySelector('button');
+    f.addEventListener('submit', async e=>{
+      e.preventDefault();
+      const email=f.email_address.value.trim(), country=f.querySelector('select').value, name=f.first_name.value.trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ msg.textContent='Please enter a valid email address.'; msg.className='form-msg show err'; return; }
+      if(!country){ msg.textContent='Please choose your country.'; msg.className='form-msg show err'; return; }
+      btn.disabled=true; btn.textContent='Adding you…';
+      const id=f.dataset.ckForm; let ok=false;
+      if(id && id!=='FORM_ID'){
+        try{ const r=await fetch(`https://app.kit.com/forms/${id}/subscriptions`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email_address:email,first_name:name,fields:{country}})}); ok=r.ok; }catch(_){ ok=false; }
+      } else {
+        try{ const k='aaim_waitlist'; const l=JSON.parse(localStorage.getItem(k)||'[]'); l.push({name,email,country,at:new Date().toISOString()}); localStorage.setItem(k,JSON.stringify(l)); ok=true; }catch(_){ ok=true; }
+      }
+      if(ok){ f.querySelectorAll('input,select').forEach(i=>i.style.display='none'); btn.style.display='none';
+        msg.innerHTML=`<b>You're on the list${name?', '+name:''}.</b> Your report is ready — <a href="thank-you.html">download it now</a>. We'll email you the moment pre-orders open.`; msg.className='form-msg show'; }
+      else { msg.textContent='Something went wrong. Email hippolyte@africaaimoment.com and we will send it by hand.'; msg.className='form-msg show err'; btn.disabled=false; btn.textContent='Send Me The Report'; }
+    });
+  })();
 </script>
 </body>
 </html>
