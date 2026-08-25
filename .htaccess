@@ -1,0 +1,15 @@
+# Force HTTPS + www-less canonical
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://africaaimoment.com%{REQUEST_URI} [L,R=301]
+
+# Clean URL for the thank-you page
+RewriteRule ^thank-you/?$ thank-you.html [L]
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType application/pdf "access plus 7 days"
+</IfModule>
