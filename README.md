@@ -12,7 +12,6 @@ Redirect africaaimoment.africa → africaaimoment.com at your registrar.
 | Author photo | drop your blue-blazer photo at `assets/hippolyte.jpg` (square crop, ≥600px) |
 | Bonus Report PDF | already built at `assets/Africa-G7-AI-Preparedness-Gap-2026.pdf`; edit `report/bonus-report.html` and re-render to change |
 | Email capture | replace the `<form>` in the "Free Bonus Report" card with your ConvertKit / Mailchimp embed, or set its `action` to their endpoint and redirect to `thank-you.html` |
-| Podcast link | footer `The Smart Office Podcast` `href="#"` |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
 | Launch date | badge on the cover says `Fall 2026` |
 | Price | `$27.99` appears in the hero button and on the thank-you page |
