@@ -1,1129 +1,1009 @@
 // AI readiness dataset — country explorer, africaaimoment.com
-// PRELIMINARY ESTIMATES. Full audit in the book.
-//
-// Source: Oxford Insights, Government AI Readiness Index 2025 (published Jan 2026), "Full Rankings and Pillar Scores".
-//   https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/
-//   readiness  = equal-weighted mean of the six pillar scores / 100 (Oxford's published overall uses undisclosed weights; ranks may differ by a few places)
-//   infra      = AI Infrastructure pillar / 100 (compute + data)
-//   talent     = Development & Diffusion pillar / 100 (AI sector + human capital)
-//   governance = Governance pillar / 100
-//   pillars    = all six raw pillar scores (0–100), globalRank = Oxford's published rank of 195
-//   imfAudit   = IMF AI Preparedness Index value from the book's Bonus Report (separate index, 0–1), for the 17 audited economies
-//   gap        = ILLUSTRATIVE funding gap vs G7 in US$ billions (placeholder formula, not a source figure). G7 members = 0.
-// To replace with the final audit: keep the field names; set source:"audit".
+// SOURCE OF TRUTH: Oxford Insights, Government AI Readiness Index 2024 (188 countries), via the cleaned CSV
+//   https://github.com/albadi140/goverment_ai_amplification/blob/main/data/ai_readiness_2024.csv
+//   Official report: https://oxfordinsights.com/ai-readiness/  (2024 edition, published Dec 2024)
+//   Africa commentary: https://www.ictworks.org/african-government-ai-readiness/
+// Conversion: all 0–100 Oxford scores divided by 100 to the 0–1.0 scale used on the site.
+//   readiness  = Oxford Total score /100                      (official overall)
+//   government = Government pillar /100                       (vision, governance & ethics, digital capacity, adaptability)
+//   infra      = Data & Infrastructure pillar /100            (infrastructure, data availability, data representativeness)
+//   innovation = Technology Sector pillar /100                (maturity, innovation capacity, human capital) — used for the Innovation & Integration column
+//   oxford2024 = raw 0–100 values + global rank (1–188) computed from Total
+//   imfAudit   = IMF AI Preparedness Index value (0–1, a different index) from the book's Bonus Report, 17 audited economies
+//   gap        = ILLUSTRATIVE funding gap vs G7 average in US$ billions (placeholder formula, not a source figure). G7 = 0.
+// Validation: Stanford HAI Global AI Vibrancy 2025 (16 African states) — https://hai.stanford.edu/ai-index
+// Replace with the final audit by keeping the field names and setting source:"audit".
 window.AI_DATA = {
  "Algeria": {
-  "readiness": 0.437,
-  "infra": 0.431,
-  "talent": 0.339,
-  "governance": 0.59,
-  "pillars": {
-   "policy": 65.5,
-   "infrastructure": 43.12,
-   "governance": 59.0,
-   "publicSector": 26.42,
-   "development": 33.86,
-   "resilience": 34.44
+  "readiness": 0.3906,
+  "government": 0.3168,
+  "infra": 0.5224,
+  "innovation": 0.3326,
+  "oxford2024": {
+   "total": 39.06,
+   "government": 31.68,
+   "technologySector": 33.26,
+   "dataInfrastructure": 52.24,
+   "globalRank": 115
   },
-  "globalRank": 89,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.37,
-  "gap": 9.4
+  "gap": 10.4
  },
  "Angola": {
-  "readiness": 0.271,
-  "infra": 0.308,
-  "talent": 0.141,
-  "governance": 0.53,
-  "pillars": {
-   "policy": 15.5,
-   "infrastructure": 30.77,
-   "governance": 53.03,
-   "publicSector": 29.51,
-   "development": 14.14,
-   "resilience": 19.35
+  "readiness": 0.2691,
+  "government": 0.1973,
+  "infra": 0.4513,
+  "innovation": 0.1587,
+  "oxford2024": {
+   "total": 26.91,
+   "government": 19.73,
+   "technologySector": 15.87,
+   "dataInfrastructure": 45.13,
+   "globalRank": 169
   },
-  "globalRank": 141,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 5.6
  },
  "Benin": {
-  "readiness": 0.457,
-  "infra": 0.27,
-  "talent": 0.269,
-  "governance": 0.613,
-  "pillars": {
-   "policy": 61.0,
-   "infrastructure": 26.99,
-   "governance": 61.25,
-   "publicSector": 63.05,
-   "development": 26.89,
-   "resilience": 34.9
+  "readiness": 0.4297,
+  "government": 0.5992,
+  "infra": 0.4468,
+  "innovation": 0.243,
+  "oxford2024": {
+   "total": 42.97,
+   "government": 59.92,
+   "technologySector": 24.3,
+   "dataInfrastructure": 44.68,
+   "globalRank": 96
   },
-  "globalRank": 90,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 1.7
  },
  "Botswana": {
-  "readiness": 0.365,
-  "infra": 0.401,
-  "talent": 0.278,
-  "governance": 0.606,
-  "pillars": {
-   "policy": 19.5,
-   "infrastructure": 40.13,
-   "governance": 60.63,
-   "publicSector": 39.11,
-   "development": 27.83,
-   "resilience": 32.04
+  "readiness": 0.3816,
+  "government": 0.3514,
+  "infra": 0.4912,
+  "innovation": 0.3023,
+  "oxford2024": {
+   "total": 38.16,
+   "government": 35.14,
+   "technologySector": 30.23,
+   "dataInfrastructure": 49.12,
+   "globalRank": 120
   },
-  "globalRank": 109,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 1.8
  },
  "Burkina Faso": {
-  "readiness": 0.315,
-  "infra": 0.234,
-  "talent": 0.15,
-  "governance": 0.481,
-  "pillars": {
-   "policy": 23.0,
-   "infrastructure": 23.39,
-   "governance": 48.13,
-   "publicSector": 48.35,
-   "development": 15.03,
-   "resilience": 30.78
+  "readiness": 0.2928,
+  "government": 0.2569,
+  "infra": 0.4092,
+  "innovation": 0.2122,
+  "oxford2024": {
+   "total": 29.28,
+   "government": 25.69,
+   "technologySector": 21.22,
+   "dataInfrastructure": 40.92,
+   "globalRank": 162
   },
-  "globalRank": 127,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 1.9
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Burundi": {
-  "readiness": 0.175,
-  "infra": 0.166,
-  "talent": 0.122,
-  "governance": 0.116,
-  "pillars": {
-   "policy": 11.5,
-   "infrastructure": 16.63,
-   "governance": 11.63,
-   "publicSector": 36.43,
-   "development": 12.19,
-   "resilience": 16.62
+  "readiness": 0.2113,
+  "government": 0.1662,
+  "infra": 0.2784,
+  "innovation": 0.1895,
+  "oxford2024": {
+   "total": 21.13,
+   "government": 16.62,
+   "technologySector": 18.95,
+   "dataInfrastructure": 27.84,
+   "globalRank": 182
   },
-  "globalRank": 185,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.1
  },
  "Cabo Verde": {
-  "readiness": 0.335,
-  "infra": 0.35,
-  "talent": 0.116,
-  "governance": 0.355,
-  "pillars": {
-   "policy": 15.5,
-   "infrastructure": 35.0,
-   "governance": 35.49,
-   "publicSector": 66.55,
-   "development": 11.59,
-   "resilience": 36.58
+  "readiness": 0.4067,
+  "government": 0.3958,
+  "infra": 0.5519,
+  "innovation": 0.2725,
+  "oxford2024": {
+   "total": 40.67,
+   "government": 39.58,
+   "technologySector": 27.25,
+   "dataInfrastructure": 55.19,
+   "globalRank": 108
   },
-  "globalRank": 122,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 1.9
+  "source": "oxford2024",
+  "gap": 1.8
  },
  "Cameroon": {
-  "readiness": 0.358,
-  "infra": 0.349,
-  "talent": 0.292,
-  "governance": 0.537,
-  "pillars": {
-   "policy": 34.5,
-   "infrastructure": 34.92,
-   "governance": 53.75,
-   "publicSector": 22.49,
-   "development": 29.23,
-   "resilience": 39.93
+  "readiness": 0.3346,
+  "government": 0.301,
+  "infra": 0.4163,
+  "innovation": 0.2864,
+  "oxford2024": {
+   "total": 33.46,
+   "government": 30.1,
+   "technologySector": 28.64,
+   "dataInfrastructure": 41.63,
+   "globalRank": 147
   },
-  "globalRank": 116,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 3.1
+  "source": "oxford2024",
+  "gap": 3.2
  },
  "Central African Republic": {
-  "readiness": 0.119,
-  "infra": 0.226,
-  "talent": 0.096,
-  "governance": 0.022,
-  "pillars": {
-   "policy": 11.5,
-   "infrastructure": 22.64,
-   "governance": 2.25,
-   "publicSector": 13.91,
-   "development": 9.56,
-   "resilience": 11.77
+  "readiness": 0.2026,
+  "government": 0.1207,
+  "infra": 0.2877,
+  "innovation": 0.1995,
+  "oxford2024": {
+   "total": 20.26,
+   "government": 12.07,
+   "technologySector": 19.95,
+   "dataInfrastructure": 28.77,
+   "globalRank": 183
   },
-  "globalRank": 192,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.3
+  "source": "oxford2024",
+  "gap": 2.2
  },
  "Chad": {
-  "readiness": 0.184,
-  "infra": 0.205,
-  "talent": 0.101,
-  "governance": 0.487,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 20.51,
-   "governance": 48.67,
-   "publicSector": 4.53,
-   "development": 10.1,
-   "resilience": 26.76
+  "readiness": 0.2266,
+  "government": 0.2094,
+  "infra": 0.2882,
+  "innovation": 0.1822,
+  "oxford2024": {
+   "total": 22.66,
+   "government": 20.94,
+   "technologySector": 18.22,
+   "dataInfrastructure": 28.82,
+   "globalRank": 179
   },
-  "globalRank": 182,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.1
  },
  "Comoros": {
-  "readiness": 0.203,
-  "infra": 0.318,
-  "talent": 0.1,
-  "governance": 0.102,
-  "pillars": {
-   "policy": 7.5,
-   "infrastructure": 31.82,
-   "governance": 10.24,
-   "publicSector": 34.47,
-   "development": 10.01,
-   "resilience": 27.53
+  "readiness": 0.2665,
+  "government": 0.1722,
+  "infra": 0.3897,
+  "innovation": 0.2375,
+  "oxford2024": {
+   "total": 26.65,
+   "government": 17.22,
+   "technologySector": 23.75,
+   "dataInfrastructure": 38.97,
+   "globalRank": 170
   },
-  "globalRank": 171,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Democratic Republic of the Congo": {
-  "readiness": 0.265,
-  "infra": 0.2,
-  "talent": 0.234,
-  "governance": 0.468,
-  "pillars": {
-   "policy": 23.0,
-   "infrastructure": 19.98,
-   "governance": 46.75,
-   "publicSector": 17.58,
-   "development": 23.45,
-   "resilience": 28.09
+  "readiness": 0.221,
+  "government": 0.1796,
+  "infra": 0.3234,
+  "innovation": 0.1599,
+  "oxford2024": {
+   "total": 22.1,
+   "government": 17.96,
+   "technologySector": 15.99,
+   "dataInfrastructure": 32.34,
+   "globalRank": 181
   },
-  "globalRank": 144,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 4.6
+  "source": "oxford2024",
+  "gap": 4.9
  },
  "Republic of the Congo": {
-  "readiness": 0.18,
-  "infra": 0.224,
-  "talent": 0.178,
-  "governance": 0.315,
-  "pillars": {
-   "policy": 12.0,
-   "infrastructure": 22.41,
-   "governance": 31.49,
-   "publicSector": 3.89,
-   "development": 17.8,
-   "resilience": 20.39
+  "readiness": 0.2512,
+  "government": 0.224,
+  "infra": 0.3024,
+  "innovation": 0.2271,
+  "oxford2024": {
+   "total": 25.12,
+   "government": 22.4,
+   "technologySector": 22.71,
+   "dataInfrastructure": 30.24,
+   "globalRank": 175
   },
-  "globalRank": 178,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.1
  },
  "Côte d'Ivoire": {
-  "readiness": 0.44,
-  "infra": 0.412,
-  "talent": 0.279,
-  "governance": 0.606,
-  "pillars": {
-   "policy": 57.5,
-   "infrastructure": 41.21,
-   "governance": 60.63,
-   "publicSector": 19.02,
-   "development": 27.94,
-   "resilience": 57.53
+  "readiness": 0.3469,
+  "government": 0.3115,
+  "infra": 0.4681,
+  "innovation": 0.261,
+  "oxford2024": {
+   "total": 34.69,
+   "government": 31.15,
+   "technologySector": 26.1,
+   "dataInfrastructure": 46.81,
+   "globalRank": 140
   },
-  "globalRank": 95,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 3.8
+  "source": "oxford2024",
+  "gap": 4.5
  },
  "Djibouti": {
-  "readiness": 0.225,
-  "infra": 0.377,
-  "talent": 0.228,
-  "governance": 0.123,
-  "pillars": {
-   "policy": 11.5,
-   "infrastructure": 37.67,
-   "governance": 12.26,
-   "publicSector": 26.8,
-   "development": 22.81,
-   "resilience": 23.89
+  "readiness": 0.3519,
+  "government": 0.2313,
+  "infra": 0.4961,
+  "innovation": 0.3284,
+  "oxford2024": {
+   "total": 35.19,
+   "government": 23.13,
+   "technologySector": 32.84,
+   "dataInfrastructure": 49.61,
+   "globalRank": 138
   },
-  "globalRank": 148,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.1
+  "source": "oxford2024",
+  "gap": 1.9
  },
  "Egypt": {
-  "readiness": 0.64,
-  "infra": 0.477,
-  "talent": 0.477,
-  "governance": 0.675,
-  "pillars": {
-   "policy": 100.0,
-   "infrastructure": 47.71,
-   "governance": 67.5,
-   "publicSector": 60.07,
-   "development": 47.68,
-   "resilience": 61.14
+  "readiness": 0.5563,
+  "government": 0.6898,
+  "infra": 0.5577,
+  "innovation": 0.4213,
+  "oxford2024": {
+   "total": 55.63,
+   "government": 68.98,
+   "technologySector": 42.13,
+   "dataInfrastructure": 55.77,
+   "globalRank": 65
   },
-  "globalRank": 52,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.39,
-  "gap": 6.1
+  "gap": 8.9
  },
  "Equatorial Guinea": {
-  "readiness": 0.15,
-  "infra": 0.281,
-  "talent": 0.127,
-  "governance": 0.189,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 28.09,
-   "governance": 18.86,
-   "publicSector": 2.85,
-   "development": 12.67,
-   "resilience": 27.29
+  "readiness": 0.2709,
+  "government": 0.1928,
+  "infra": 0.3631,
+  "innovation": 0.2568,
+  "oxford2024": {
+   "total": 27.09,
+   "government": 19.28,
+   "technologySector": 25.68,
+   "dataInfrastructure": 36.31,
+   "globalRank": 167
   },
-  "globalRank": 187,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.3
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Eritrea": {
-  "readiness": 0.103,
-  "infra": 0.254,
-  "talent": 0.16,
-  "governance": 0.067,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 25.35,
-   "governance": 6.67,
-   "publicSector": 0.0,
-   "development": 15.96,
-   "resilience": 13.69
+  "readiness": 0.222,
+  "government": 0.083,
+  "infra": 0.3522,
+  "innovation": 0.2307,
+  "oxford2024": {
+   "total": 22.2,
+   "government": 8.3,
+   "technologySector": 23.07,
+   "dataInfrastructure": 35.22,
+   "globalRank": 180
   },
-  "globalRank": 193,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.4
- },
- "Eswatini": {
-  "readiness": 0.282,
-  "infra": 0.355,
-  "talent": 0.106,
-  "governance": 0.43,
-  "pillars": {
-   "policy": 16.0,
-   "infrastructure": 35.45,
-   "governance": 42.99,
-   "publicSector": 34.88,
-   "development": 10.61,
-   "resilience": 29.06
-  },
-  "globalRank": 137,
-  "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.0
- },
- "Ethiopia": {
-  "readiness": 0.442,
-  "infra": 0.284,
-  "talent": 0.387,
-  "governance": 0.549,
-  "pillars": {
-   "policy": 49.5,
-   "infrastructure": 28.45,
-   "governance": 54.88,
-   "publicSector": 44.65,
-   "development": 38.7,
-   "resilience": 49.09
-  },
-  "globalRank": 91,
-  "region": "Africa",
-  "source": "oxford2025",
-  "imfAudit": 0.25,
-  "gap": 6.5
- },
- "Gabon": {
-  "readiness": 0.278,
-  "infra": 0.352,
-  "talent": 0.204,
-  "governance": 0.512,
-  "pillars": {
-   "policy": 16.0,
-   "infrastructure": 35.19,
-   "governance": 51.25,
-   "publicSector": 16.48,
-   "development": 20.37,
-   "resilience": 27.58
-  },
-  "globalRank": 133,
-  "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.0
- },
- "Gambia": {
-  "readiness": 0.241,
-  "infra": 0.33,
-  "talent": 0.103,
-  "governance": 0.378,
-  "pillars": {
-   "policy": 15.5,
-   "infrastructure": 32.99,
-   "governance": 37.79,
-   "publicSector": 15.32,
-   "development": 10.31,
-   "resilience": 33.01
-  },
-  "globalRank": 153,
-  "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 2.1
  },
- "Ghana": {
-  "readiness": 0.491,
-  "infra": 0.461,
-  "talent": 0.337,
-  "governance": 0.662,
-  "pillars": {
-   "policy": 53.5,
-   "infrastructure": 46.12,
-   "governance": 66.25,
-   "publicSector": 53.35,
-   "development": 33.68,
-   "resilience": 41.81
+ "Eswatini": {
+  "readiness": 0.3623,
+  "government": 0.2911,
+  "infra": 0.5336,
+  "innovation": 0.262,
+  "oxford2024": {
+   "total": 36.23,
+   "government": 29.11,
+   "technologySector": 26.2,
+   "dataInfrastructure": 53.36,
+   "globalRank": 136
   },
-  "globalRank": 78,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
+  "gap": 1.8
+ },
+ "Ethiopia": {
+  "readiness": 0.3834,
+  "government": 0.5146,
+  "infra": 0.4198,
+  "innovation": 0.2157,
+  "oxford2024": {
+   "total": 38.34,
+   "government": 51.46,
+   "technologySector": 21.57,
+   "dataInfrastructure": 41.98,
+   "globalRank": 119
+  },
+  "region": "Africa",
+  "source": "oxford2024",
+  "imfAudit": 0.25,
+  "gap": 7.4
+ },
+ "Gabon": {
+  "readiness": 0.3415,
+  "government": 0.2545,
+  "infra": 0.4922,
+  "innovation": 0.2777,
+  "oxford2024": {
+   "total": 34.15,
+   "government": 25.45,
+   "technologySector": 27.77,
+   "dataInfrastructure": 49.22,
+   "globalRank": 144
+  },
+  "region": "Africa",
+  "source": "oxford2024",
+  "gap": 1.9
+ },
+ "Gambia": {
+  "readiness": 0.2695,
+  "government": 0.2325,
+  "infra": 0.3792,
+  "innovation": 0.1967,
+  "oxford2024": {
+   "total": 26.95,
+   "government": 23.25,
+   "technologySector": 19.67,
+   "dataInfrastructure": 37.92,
+   "globalRank": 168
+  },
+  "region": "Africa",
+  "source": "oxford2024",
+  "gap": 2.0
+ },
+ "Ghana": {
+  "readiness": 0.433,
+  "government": 0.5953,
+  "infra": 0.4503,
+  "innovation": 0.2535,
+  "oxford2024": {
+   "total": 43.3,
+   "government": 59.53,
+   "technologySector": 25.35,
+   "dataInfrastructure": 45.03,
+   "globalRank": 95
+  },
+  "region": "Africa",
+  "source": "oxford2024",
   "imfAudit": 0.43,
-  "gap": 3.4
+  "gap": 3.8
  },
  "Guinea": {
-  "readiness": 0.173,
-  "infra": 0.289,
-  "talent": 0.116,
-  "governance": 0.206,
-  "pillars": {
-   "policy": 4.0,
-   "infrastructure": 28.91,
-   "governance": 20.63,
-   "publicSector": 6.01,
-   "development": 11.63,
-   "resilience": 32.79
+  "readiness": 0.3021,
+  "government": 0.2563,
+  "infra": 0.4277,
+  "innovation": 0.2224,
+  "oxford2024": {
+   "total": 30.21,
+   "government": 25.63,
+   "technologySector": 22.24,
+   "dataInfrastructure": 42.77,
+   "globalRank": 158
   },
-  "globalRank": 183,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Guinea-Bissau": {
-  "readiness": 0.108,
-  "infra": 0.232,
-  "talent": 0.105,
-  "governance": 0.101,
-  "pillars": {
-   "policy": 4.0,
-   "infrastructure": 23.24,
-   "governance": 10.11,
-   "publicSector": 2.02,
-   "development": 10.5,
-   "resilience": 14.66
+  "readiness": 0.2571,
+  "government": 0.1465,
+  "infra": 0.4201,
+  "innovation": 0.2046,
+  "oxford2024": {
+   "total": 25.71,
+   "government": 14.65,
+   "technologySector": 20.46,
+   "dataInfrastructure": 42.01,
+   "globalRank": 172
   },
-  "globalRank": 195,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.4
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Kenya": {
-  "readiness": 0.579,
-  "infra": 0.392,
-  "talent": 0.355,
-  "governance": 0.706,
-  "pillars": {
-   "policy": 69.0,
-   "infrastructure": 39.17,
-   "governance": 70.63,
-   "publicSector": 62.14,
-   "development": 35.48,
-   "resilience": 70.74
+  "readiness": 0.4356,
+  "government": 0.562,
+  "infra": 0.4349,
+  "innovation": 0.3098,
+  "oxford2024": {
+   "total": 43.56,
+   "government": 56.2,
+   "technologySector": 30.98,
+   "dataInfrastructure": 43.49,
+   "globalRank": 93
   },
-  "globalRank": 68,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.45,
-  "gap": 3.3
+  "gap": 4.8
  },
  "Lesotho": {
-  "readiness": 0.304,
-  "infra": 0.288,
-  "talent": 0.176,
-  "governance": 0.388,
-  "pillars": {
-   "policy": 34.5,
-   "infrastructure": 28.79,
-   "governance": 38.79,
-   "publicSector": 36.83,
-   "development": 17.59,
-   "resilience": 25.63
+  "readiness": 0.2821,
+  "government": 0.2466,
+  "infra": 0.389,
+  "innovation": 0.2108,
+  "oxford2024": {
+   "total": 28.21,
+   "government": 24.66,
+   "technologySector": 21.08,
+   "dataInfrastructure": 38.9,
+   "globalRank": 166
   },
-  "globalRank": 131,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 2.0
  },
  "Liberia": {
-  "readiness": 0.145,
-  "infra": 0.271,
-  "talent": 0.098,
-  "governance": 0.035,
-  "pillars": {
-   "policy": 8.0,
-   "infrastructure": 27.05,
-   "governance": 3.5,
-   "publicSector": 24.92,
-   "development": 9.77,
-   "resilience": 13.85
+  "readiness": 0.2312,
+  "government": 0.1658,
+  "infra": 0.319,
+  "innovation": 0.2089,
+  "oxford2024": {
+   "total": 23.12,
+   "government": 16.58,
+   "technologySector": 20.89,
+   "dataInfrastructure": 31.9,
+   "globalRank": 178
   },
-  "globalRank": 189,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.3
+  "source": "oxford2024",
+  "gap": 2.1
  },
  "Libya": {
-  "readiness": 0.294,
-  "infra": 0.438,
-  "talent": 0.189,
-  "governance": 0.249,
-  "pillars": {
-   "policy": 39.0,
-   "infrastructure": 43.8,
-   "governance": 24.88,
-   "publicSector": 2.09,
-   "development": 18.88,
-   "resilience": 47.61
+  "readiness": 0.3325,
+  "government": 0.1641,
+  "infra": 0.488,
+  "innovation": 0.3453,
+  "oxford2024": {
+   "total": 33.25,
+   "government": 16.41,
+   "technologySector": 34.53,
+   "dataInfrastructure": 48.8,
+   "globalRank": 149
   },
-  "globalRank": 134,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 3.0
+  "source": "oxford2024",
+  "gap": 2.8
  },
  "Madagascar": {
-  "readiness": 0.2,
-  "infra": 0.274,
-  "talent": 0.119,
-  "governance": 0.302,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 27.37,
-   "governance": 30.16,
-   "publicSector": 30.87,
-   "development": 11.93,
-   "resilience": 19.54
+  "readiness": 0.288,
+  "government": 0.253,
+  "infra": 0.3992,
+  "innovation": 0.2119,
+  "oxford2024": {
+   "total": 28.8,
+   "government": 25.3,
+   "technologySector": 21.19,
+   "dataInfrastructure": 39.92,
+   "globalRank": 164
   },
-  "globalRank": 168,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
- },
- "Malawi": {
-  "readiness": 0.249,
-  "infra": 0.287,
-  "talent": 0.186,
-  "governance": 0.379,
-  "pillars": {
-   "policy": 23.0,
-   "infrastructure": 28.7,
-   "governance": 37.88,
-   "publicSector": 5.78,
-   "development": 18.57,
-   "resilience": 35.6
-  },
-  "globalRank": 149,
-  "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.1
- },
- "Mali": {
-  "readiness": 0.223,
-  "infra": 0.295,
-  "talent": 0.181,
-  "governance": 0.38,
-  "pillars": {
-   "policy": 4.0,
-   "infrastructure": 29.54,
-   "governance": 38.0,
-   "publicSector": 26.67,
-   "development": 18.12,
-   "resilience": 17.64
-  },
-  "globalRank": 152,
-  "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.1
- },
- "Mauritania": {
-  "readiness": 0.289,
-  "infra": 0.286,
-  "talent": 0.16,
-  "governance": 0.405,
-  "pillars": {
-   "policy": 34.5,
-   "infrastructure": 28.63,
-   "governance": 40.53,
-   "publicSector": 30.05,
-   "development": 16.0,
-   "resilience": 23.85
-  },
-  "globalRank": 138,
-  "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 2.0
  },
- "Mauritius": {
-  "readiness": 0.546,
-  "infra": 0.487,
-  "talent": 0.385,
-  "governance": 0.725,
-  "pillars": {
-   "policy": 65.5,
-   "infrastructure": 48.72,
-   "governance": 72.5,
-   "publicSector": 65.63,
-   "development": 38.52,
-   "resilience": 36.76
+ "Malawi": {
+  "readiness": 0.2932,
+  "government": 0.2785,
+  "infra": 0.3632,
+  "innovation": 0.2379,
+  "oxford2024": {
+   "total": 29.32,
+   "government": 27.85,
+   "technologySector": 23.79,
+   "dataInfrastructure": 36.32,
+   "globalRank": 161
   },
-  "globalRank": 67,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
+  "gap": 2.0
+ },
+ "Mali": {
+  "readiness": 0.3227,
+  "government": 0.26,
+  "infra": 0.4836,
+  "innovation": 0.2244,
+  "oxford2024": {
+   "total": 32.27,
+   "government": 26.0,
+   "technologySector": 22.44,
+   "dataInfrastructure": 48.36,
+   "globalRank": 155
+  },
+  "region": "Africa",
+  "source": "oxford2024",
+  "gap": 1.9
+ },
+ "Mauritania": {
+  "readiness": 0.414,
+  "government": 0.5012,
+  "infra": 0.4498,
+  "innovation": 0.291,
+  "oxford2024": {
+   "total": 41.4,
+   "government": 50.12,
+   "technologySector": 29.1,
+   "dataInfrastructure": 44.98,
+   "globalRank": 105
+  },
+  "region": "Africa",
+  "source": "oxford2024",
+  "gap": 1.7
+ },
+ "Mauritius": {
+  "readiness": 0.5394,
+  "government": 0.6531,
+  "infra": 0.6381,
+  "innovation": 0.3271,
+  "oxford2024": {
+   "total": 53.94,
+   "government": 65.31,
+   "technologySector": 32.71,
+   "dataInfrastructure": 63.81,
+   "globalRank": 69
+  },
+  "region": "Africa",
+  "source": "oxford2024",
   "gap": 1.5
  },
  "Morocco": {
-  "readiness": 0.426,
-  "infra": 0.481,
-  "talent": 0.308,
-  "governance": 0.787,
-  "pillars": {
-   "policy": 23.0,
-   "infrastructure": 48.12,
-   "governance": 78.75,
-   "publicSector": 34.9,
-   "development": 30.81,
-   "resilience": 39.78
+  "readiness": 0.4178,
+  "government": 0.3482,
+  "infra": 0.5382,
+  "innovation": 0.367,
+  "oxford2024": {
+   "total": 41.78,
+   "government": 34.82,
+   "technologySector": 36.7,
+   "dataInfrastructure": 53.82,
+   "globalRank": 101
   },
-  "globalRank": 86,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.43,
-  "gap": 6.0
+  "gap": 6.1
  },
  "Mozambique": {
-  "readiness": 0.227,
-  "infra": 0.292,
-  "talent": 0.115,
-  "governance": 0.308,
-  "pillars": {
-   "policy": 8.0,
-   "infrastructure": 29.21,
-   "governance": 30.79,
-   "publicSector": 21.2,
-   "development": 11.46,
-   "resilience": 35.42
+  "readiness": 0.2422,
+  "government": 0.2086,
+  "infra": 0.3357,
+  "innovation": 0.1823,
+  "oxford2024": {
+   "total": 24.22,
+   "government": 20.86,
+   "technologySector": 18.23,
+   "dataInfrastructure": 33.57,
+   "globalRank": 177
   },
-  "globalRank": 161,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 2.1
  },
  "Namibia": {
-  "readiness": 0.379,
-  "infra": 0.349,
-  "talent": 0.282,
-  "governance": 0.529,
-  "pillars": {
-   "policy": 19.5,
-   "infrastructure": 34.85,
-   "governance": 52.88,
-   "publicSector": 44.8,
-   "development": 28.21,
-   "resilience": 47.15
+  "readiness": 0.3328,
+  "government": 0.2856,
+  "infra": 0.4592,
+  "innovation": 0.2536,
+  "oxford2024": {
+   "total": 33.28,
+   "government": 28.56,
+   "technologySector": 25.36,
+   "dataInfrastructure": 45.92,
+   "globalRank": 148
   },
-  "globalRank": 110,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 1.8
+  "source": "oxford2024",
+  "gap": 1.9
  },
  "Niger": {
-  "readiness": 0.176,
-  "infra": 0.184,
-  "talent": 0.092,
-  "governance": 0.389,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 18.43,
-   "governance": 38.92,
-   "publicSector": 16.35,
-   "development": 9.19,
-   "resilience": 22.46
+  "readiness": 0.2574,
+  "government": 0.2422,
+  "infra": 0.3587,
+  "innovation": 0.1715,
+  "oxford2024": {
+   "total": 25.74,
+   "government": 24.22,
+   "technologySector": 17.15,
+   "dataInfrastructure": 35.87,
+   "globalRank": 171
   },
-  "globalRank": 184,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Nigeria": {
-  "readiness": 0.545,
-  "infra": 0.391,
-  "talent": 0.395,
-  "governance": 0.781,
-  "pillars": {
-   "policy": 80.5,
-   "infrastructure": 39.1,
-   "governance": 78.13,
-   "publicSector": 47.46,
-   "development": 39.45,
-   "resilience": 42.66
+  "readiness": 0.4333,
+  "government": 0.5988,
+  "infra": 0.4299,
+  "innovation": 0.2711,
+  "oxford2024": {
+   "total": 43.33,
+   "government": 59.88,
+   "technologySector": 27.11,
+   "dataInfrastructure": 42.99,
+   "globalRank": 94
   },
-  "globalRank": 70,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.34,
-  "gap": 9.7
+  "gap": 13.5
  },
  "Rwanda": {
-  "readiness": 0.54,
-  "infra": 0.339,
-  "talent": 0.294,
-  "governance": 0.787,
-  "pillars": {
-   "policy": 73.0,
-   "infrastructure": 33.92,
-   "governance": 78.75,
-   "publicSector": 53.62,
-   "development": 29.36,
-   "resilience": 55.62
+  "readiness": 0.5125,
+  "government": 0.7144,
+  "infra": 0.5202,
+  "innovation": 0.303,
+  "oxford2024": {
+   "total": 51.25,
+   "government": 71.44,
+   "technologySector": 30.3,
+   "dataInfrastructure": 52.02,
+   "globalRank": 78
   },
-  "globalRank": 74,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 1.5
  },
  "São Tomé and Príncipe": {
-  "readiness": 0.171,
-  "infra": 0.295,
-  "talent": 0.1,
-  "governance": 0.279,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 29.52,
-   "governance": 27.86,
-   "publicSector": 15.63,
-   "development": 10.03,
-   "resilience": 19.58
+  "readiness": 0.2963,
+  "government": 0.2482,
+  "infra": 0.4039,
+  "innovation": 0.2369,
+  "oxford2024": {
+   "total": 29.63,
+   "government": 24.82,
+   "technologySector": 23.69,
+   "dataInfrastructure": 40.39,
+   "globalRank": 160
   },
-  "globalRank": 180,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Senegal": {
-  "readiness": 0.43,
-  "infra": 0.37,
-  "talent": 0.314,
-  "governance": 0.634,
-  "pillars": {
-   "policy": 61.0,
-   "infrastructure": 37.03,
-   "governance": 63.38,
-   "publicSector": 28.47,
-   "development": 31.39,
-   "resilience": 36.54
+  "readiness": 0.4611,
+  "government": 0.6237,
+  "infra": 0.4718,
+  "innovation": 0.2877,
+  "oxford2024": {
+   "total": 46.11,
+   "government": 62.37,
+   "technologySector": 28.77,
+   "dataInfrastructure": 47.18,
+   "globalRank": 83
   },
-  "globalRank": 96,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.1
+  "source": "oxford2024",
+  "gap": 2.0
  },
  "Seychelles": {
-  "readiness": 0.26,
-  "infra": 0.438,
-  "talent": 0.118,
-  "governance": 0.397,
-  "pillars": {
-   "policy": 8.0,
-   "infrastructure": 43.75,
-   "governance": 39.66,
-   "publicSector": 26.98,
-   "development": 11.77,
-   "resilience": 25.67
+  "readiness": 0.4477,
+  "government": 0.4141,
+  "infra": 0.5609,
+  "innovation": 0.3681,
+  "oxford2024": {
+   "total": 44.77,
+   "government": 41.41,
+   "technologySector": 36.81,
+   "dataInfrastructure": 56.09,
+   "globalRank": 87
   },
-  "globalRank": 140,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.1
+  "source": "oxford2024",
+  "gap": 1.7
  },
  "Sierra Leone": {
-  "readiness": 0.211,
-  "infra": 0.256,
-  "talent": 0.109,
-  "governance": 0.159,
-  "pillars": {
-   "policy": 27.5,
-   "infrastructure": 25.64,
-   "governance": 15.92,
-   "publicSector": 15.28,
-   "development": 10.91,
-   "resilience": 31.16
+  "readiness": 0.2534,
+  "government": 0.2196,
+  "infra": 0.3633,
+  "innovation": 0.1772,
+  "oxford2024": {
+   "total": 25.34,
+   "government": 21.96,
+   "technologySector": 17.72,
+   "dataInfrastructure": 36.33,
+   "globalRank": 173
   },
-  "globalRank": 175,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.2
+  "source": "oxford2024",
+  "gap": 2.1
  },
  "Somalia": {
-  "readiness": 0.215,
-  "infra": 0.251,
-  "talent": 0.223,
-  "governance": 0.253,
-  "pillars": {
-   "policy": 15.0,
-   "infrastructure": 25.1,
-   "governance": 25.29,
-   "publicSector": 11.21,
-   "development": 22.33,
-   "resilience": 29.85
+  "readiness": 0.2532,
+  "government": 0.1905,
+  "infra": 0.3654,
+  "innovation": 0.2036,
+  "oxford2024": {
+   "total": 25.32,
+   "government": 19.05,
+   "technologySector": 20.36,
+   "dataInfrastructure": 36.54,
+   "globalRank": 174
   },
-  "globalRank": 164,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 2.1
  },
  "South Africa": {
-  "readiness": 0.538,
-  "infra": 0.6,
-  "talent": 0.373,
-  "governance": 0.766,
-  "pillars": {
-   "policy": 43.0,
-   "infrastructure": 60.05,
-   "governance": 76.58,
-   "publicSector": 64.93,
-   "development": 37.28,
-   "resilience": 40.81
+  "readiness": 0.5291,
+  "government": 0.543,
+  "infra": 0.6528,
+  "innovation": 0.3915,
+  "oxford2024": {
+   "total": 52.91,
+   "government": 54.3,
+   "technologySector": 39.15,
+   "dataInfrastructure": 65.28,
+   "globalRank": 72
   },
-  "globalRank": 65,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.5,
-  "gap": 10.4
+  "gap": 10.6
  },
  "South Sudan": {
-  "readiness": 0.108,
-  "infra": 0.244,
-  "talent": 0.114,
-  "governance": 0.046,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 24.39,
-   "governance": 4.63,
-   "publicSector": 1.88,
-   "development": 11.43,
-   "resilience": 22.73
+  "readiness": 0.1858,
+  "government": 0.1104,
+  "infra": 0.2496,
+  "innovation": 0.1974,
+  "oxford2024": {
+   "total": 18.58,
+   "government": 11.04,
+   "technologySector": 19.74,
+   "dataInfrastructure": 24.96,
+   "globalRank": 185
   },
-  "globalRank": 194,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.4
+  "source": "oxford2024",
+  "gap": 2.2
  },
  "Sudan": {
-  "readiness": 0.152,
-  "infra": 0.245,
-  "talent": 0.12,
-  "governance": 0.174,
-  "pillars": {
-   "policy": 0.0,
-   "infrastructure": 24.5,
-   "governance": 17.36,
-   "publicSector": 14.55,
-   "development": 11.97,
-   "resilience": 23.02
+  "readiness": 0.2463,
+  "government": 0.1332,
+  "infra": 0.3628,
+  "innovation": 0.2429,
+  "oxford2024": {
+   "total": 24.63,
+   "government": 13.32,
+   "technologySector": 24.29,
+   "dataInfrastructure": 36.28,
+   "globalRank": 176
   },
-  "globalRank": 186,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 3.5
+  "source": "oxford2024",
+  "gap": 3.1
  },
  "Tanzania": {
-  "readiness": 0.418,
-  "infra": 0.347,
-  "talent": 0.292,
-  "governance": 0.662,
-  "pillars": {
-   "policy": 15.5,
-   "infrastructure": 34.68,
-   "governance": 66.25,
-   "publicSector": 69.24,
-   "development": 29.23,
-   "resilience": 35.98
+  "readiness": 0.3508,
+  "government": 0.3664,
+  "infra": 0.4762,
+  "innovation": 0.2098,
+  "oxford2024": {
+   "total": 35.08,
+   "government": 36.64,
+   "technologySector": 20.98,
+   "dataInfrastructure": 47.62,
+   "globalRank": 139
   },
-  "globalRank": 93,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.35,
-  "gap": 3.9
+  "gap": 4.4
  },
  "Togo": {
-  "readiness": 0.319,
-  "infra": 0.321,
-  "talent": 0.12,
-  "governance": 0.55,
-  "pillars": {
-   "policy": 16.0,
-   "infrastructure": 32.13,
-   "governance": 55.0,
-   "publicSector": 41.04,
-   "development": 12.04,
-   "resilience": 35.37
+  "readiness": 0.3132,
+  "government": 0.3121,
+  "infra": 0.4192,
+  "innovation": 0.2082,
+  "oxford2024": {
+   "total": 31.32,
+   "government": 31.21,
+   "technologySector": 20.82,
+   "dataInfrastructure": 41.92,
+   "globalRank": 157
   },
-  "globalRank": 124,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "gap": 1.9
  },
  "Tunisia": {
-  "readiness": 0.411,
-  "infra": 0.436,
-  "talent": 0.367,
-  "governance": 0.59,
-  "pillars": {
-   "policy": 19.5,
-   "infrastructure": 43.61,
-   "governance": 59.0,
-   "publicSector": 51.19,
-   "development": 36.68,
-   "resilience": 36.76
+  "readiness": 0.4368,
+  "government": 0.2862,
+  "infra": 0.6135,
+  "innovation": 0.4107,
+  "oxford2024": {
+   "total": 43.68,
+   "government": 28.62,
+   "technologySector": 41.07,
+   "dataInfrastructure": 61.35,
+   "globalRank": 92
   },
-  "globalRank": 88,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.9
+  "source": "oxford2024",
+  "gap": 2.7
  },
  "Uganda": {
-  "readiness": 0.362,
-  "infra": 0.339,
-  "talent": 0.209,
-  "governance": 0.458,
-  "pillars": {
-   "policy": 12.0,
-   "infrastructure": 33.92,
-   "governance": 45.75,
-   "publicSector": 70.84,
-   "development": 20.91,
-   "resilience": 33.65
+  "readiness": 0.3463,
+  "government": 0.3557,
+  "infra": 0.461,
+  "innovation": 0.2223,
+  "oxford2024": {
+   "total": 34.63,
+   "government": 35.57,
+   "technologySector": 22.23,
+   "dataInfrastructure": 46.1,
+   "globalRank": 141
   },
-  "globalRank": 113,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 3.1
+  "source": "oxford2024",
+  "gap": 3.2
  },
  "Zambia": {
-  "readiness": 0.473,
-  "infra": 0.352,
-  "talent": 0.301,
-  "governance": 0.613,
-  "pillars": {
-   "policy": 53.5,
-   "infrastructure": 35.25,
-   "governance": 61.25,
-   "publicSector": 53.49,
-   "development": 30.08,
-   "resilience": 50.11
+  "readiness": 0.4187,
+  "government": 0.6078,
+  "infra": 0.4163,
+  "innovation": 0.2322,
+  "oxford2024": {
+   "total": 41.87,
+   "government": 60.78,
+   "technologySector": 23.22,
+   "dataInfrastructure": 41.63,
+   "globalRank": 100
   },
-  "globalRank": 82,
   "region": "Africa",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.37,
-  "gap": 1.9
+  "gap": 2.1
  },
  "Zimbabwe": {
-  "readiness": 0.294,
-  "infra": 0.294,
-  "talent": 0.23,
-  "governance": 0.53,
-  "pillars": {
-   "policy": 12.0,
-   "infrastructure": 29.37,
-   "governance": 53.0,
-   "publicSector": 27.63,
-   "development": 23.0,
-   "resilience": 31.45
+  "readiness": 0.3259,
+  "government": 0.2369,
+  "infra": 0.4627,
+  "innovation": 0.2782,
+  "oxford2024": {
+   "total": 32.59,
+   "government": 23.69,
+   "technologySector": 27.82,
+   "dataInfrastructure": 46.27,
+   "globalRank": 154
   },
-  "globalRank": 126,
   "region": "Africa",
-  "source": "oxford2025",
-  "gap": 2.0
+  "source": "oxford2024",
+  "gap": 1.9
  },
  "United States": {
-  "readiness": 0.877,
-  "infra": 0.918,
-  "talent": 0.882,
-  "governance": 0.825,
-  "pillars": {
-   "policy": 92.5,
-   "infrastructure": 91.77,
-   "governance": 82.5,
-   "publicSector": 92.87,
-   "development": 88.16,
-   "resilience": 78.28
+  "readiness": 0.8703,
+  "government": 0.8926,
+  "infra": 0.909,
+  "innovation": 0.8094,
+  "oxford2024": {
+   "total": 87.03,
+   "government": 89.26,
+   "technologySector": 80.94,
+   "dataInfrastructure": 90.9,
+   "globalRank": 1
   },
-  "globalRank": 1,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.77,
   "gap": 0
  },
  "Germany": {
-  "readiness": 0.786,
-  "infra": 0.733,
-  "talent": 0.662,
-  "governance": 0.912,
-  "pillars": {
-   "policy": 84.5,
-   "infrastructure": 73.28,
-   "governance": 91.17,
-   "publicSector": 82.89,
-   "development": 66.24,
-   "resilience": 73.37
+  "readiness": 0.769,
+  "government": 0.7924,
+  "infra": 0.8655,
+  "innovation": 0.6491,
+  "oxford2024": {
+   "total": 76.9,
+   "government": 79.24,
+   "technologySector": 64.91,
+   "dataInfrastructure": 86.55,
+   "globalRank": 8
   },
-  "globalRank": 6,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.75,
   "gap": 0
  },
  "United Kingdom": {
-  "readiness": 0.809,
-  "infra": 0.725,
-  "talent": 0.685,
-  "governance": 0.923,
-  "pillars": {
-   "policy": 100.0,
-   "infrastructure": 72.49,
-   "governance": 92.27,
-   "publicSector": 68.93,
-   "development": 68.46,
-   "resilience": 83.3
+  "readiness": 0.7888,
+  "government": 0.8447,
+  "infra": 0.8562,
+  "innovation": 0.6657,
+  "oxford2024": {
+   "total": 78.88,
+   "government": 84.47,
+   "technologySector": 66.57,
+   "dataInfrastructure": 85.62,
+   "globalRank": 5
   },
-  "globalRank": 3,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.73,
   "gap": 0
  },
  "Japan": {
-  "readiness": 0.734,
-  "infra": 0.706,
-  "talent": 0.661,
-  "governance": 0.805,
-  "pillars": {
-   "policy": 70.0,
-   "infrastructure": 70.62,
-   "governance": 80.46,
-   "publicSector": 72.71,
-   "development": 66.13,
-   "resilience": 80.75
+  "readiness": 0.7575,
+  "government": 0.8031,
+  "infra": 0.8898,
+  "innovation": 0.5796,
+  "oxford2024": {
+   "total": 75.75,
+   "government": 80.31,
+   "technologySector": 57.96,
+   "dataInfrastructure": 88.98,
+   "globalRank": 12
   },
-  "globalRank": 14,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.73,
   "gap": 0
  },
  "Canada": {
-  "readiness": 0.761,
-  "infra": 0.723,
-  "talent": 0.69,
-  "governance": 0.768,
-  "pillars": {
-   "policy": 92.5,
-   "infrastructure": 72.32,
-   "governance": 76.85,
-   "publicSector": 78.6,
-   "development": 69.03,
-   "resilience": 67.57
+  "readiness": 0.7818,
+  "government": 0.8548,
+  "infra": 0.8735,
+  "innovation": 0.6169,
+  "oxford2024": {
+   "total": 78.18,
+   "government": 85.48,
+   "technologySector": 61.69,
+   "dataInfrastructure": 87.35,
+   "globalRank": 6
   },
-  "globalRank": 12,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.71,
   "gap": 0
  },
  "France": {
-  "readiness": 0.83,
-  "infra": 0.763,
-  "talent": 0.682,
-  "governance": 0.9,
-  "pillars": {
-   "policy": 77.5,
-   "infrastructure": 76.27,
-   "governance": 90.0,
-   "publicSector": 97.18,
-   "development": 68.2,
-   "resilience": 88.63
+  "readiness": 0.7936,
+  "government": 0.8529,
+  "infra": 0.8925,
+  "innovation": 0.6353,
+  "oxford2024": {
+   "total": 79.36,
+   "government": 85.29,
+   "technologySector": 63.53,
+   "dataInfrastructure": 89.25,
+   "globalRank": 4
   },
-  "globalRank": 2,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.7,
   "gap": 0
  },
  "Italy": {
-  "readiness": 0.705,
-  "infra": 0.636,
-  "talent": 0.614,
-  "governance": 0.858,
-  "pillars": {
-   "policy": 69.5,
-   "infrastructure": 63.56,
-   "governance": 85.77,
-   "publicSector": 70.24,
-   "development": 61.38,
-   "resilience": 72.28
+  "readiness": 0.7122,
+  "government": 0.7864,
+  "infra": 0.8188,
+  "innovation": 0.5312,
+  "oxford2024": {
+   "total": 71.22,
+   "government": 78.64,
+   "technologySector": 53.12,
+   "dataInfrastructure": 81.88,
+   "globalRank": 25
   },
-  "globalRank": 25,
   "region": "G7",
-  "source": "oxford2025",
+  "source": "oxford2024",
   "imfAudit": 0.62,
   "gap": 0
  }

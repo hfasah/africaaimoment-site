@@ -14,7 +14,7 @@ Redirect africaaimoment.africa → africaaimoment.com at your registrar.
 | Email capture | ConvertKit (Kit): create a form, then set `data-ck-form="FORM_ID"` on `<form id="waitlist">` — the page POSTs to Kit with `first_name` and a custom field `country`. Until then, signups are stored in the visitor's browser only (open DevTools → localStorage → `aaim_waitlist`) |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
 | Launch date | badge on the cover says `Fall 2026` |
-| Explorer data | `assets/ai-data.js` — Oxford Insights 2025 pillar scores for 61 countries (preliminary). Replace with the final audit; keep field names |
+| Explorer data | `assets/ai-data.js` — Oxford Insights Government AI Readiness Index 2024 (Total + 3 pillars ÷100) for 61 countries, sources cited in the file header. Replace with the final audit; keep field names |
 
 ## Email sequence (set up in ConvertKit/Mailchimp)
 

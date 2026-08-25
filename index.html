@@ -382,15 +382,15 @@
 <section class="sec term-sec" id="readiness">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · preliminary estimates</div>
+      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · Oxford Insights 2024</div>
       <h2>Check your country's<br>AI readiness gap.</h2>
-      <p>Pick a country. See where it stands on readiness, infrastructure, talent and governance — against the G7 average and the African average. Preliminary scores from the Oxford Insights Government AI Readiness Index 2025; the book's full audit goes deeper.</p>
+      <p>Pick a country. See where it stands on government vision, infrastructure &amp; data, and innovation capacity — against the G7 average and the African average. Scores from the Oxford Insights Government AI Readiness Index 2024; the book's full audit goes deeper.</p>
     </div>
 
     <div class="term rv" role="region" aria-label="AI readiness explorer">
       <div class="term-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>AAIM · AI READINESS TERMINAL · OXFORD INSIGHTS 2025 · SCALE 0–1</span>
+        <span>AAIM · AI READINESS TERMINAL · OXFORD INSIGHTS 2024 · SCALE 0–1</span>
         <span class="live">Live</span>
       </div>
       <div class="term-body">
@@ -548,8 +548,8 @@
   const D = window.AI_DATA || {}; const names = Object.keys(D);
   const af = names.filter(n=>D[n].region==='Africa'), g7 = names.filter(n=>D[n].region==='G7');
   const avg = (arr,k)=>arr.reduce((s,n)=>s+D[n][k],0)/arr.length;
-  const AF = {readiness:avg(af,'readiness'),infra:avg(af,'infra'),talent:avg(af,'talent'),governance:avg(af,'governance')};
-  const G7 = {readiness:avg(g7,'readiness'),infra:avg(g7,'infra'),talent:avg(g7,'talent'),governance:avg(g7,'governance')};
+  const AF = {readiness:avg(af,'readiness'),government:avg(af,'government'),infra:avg(af,'infra'),innovation:avg(af,'innovation')};
+  const G7 = {readiness:avg(g7,'readiness'),government:avg(g7,'government'),infra:avg(g7,'infra'),innovation:avg(g7,'innovation')};
   const rankAf = [...af].sort((a,b)=>D[b].readiness-D[a].readiness);
   const list = document.getElementById('cty-list'), main = document.getElementById('cty-main'), q = document.getElementById('cty-q');
   const slug = s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
@@ -578,17 +578,17 @@
     const pct = Math.round(c.readiness/G7.readiness*100);
     main.innerHTML = `
       <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Prelim.'}</span></h3></div>
-        <div class="rk">${rank} &nbsp;·&nbsp; Global <b>#${c.globalRank} / 195</b> &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness${c.imfAudit?` &nbsp;·&nbsp; Book audit (IMF): <b>${f2(c.imfAudit)}</b>`:''}</div></div>
+        <div class="rk">${rank} &nbsp;·&nbsp; Global <b>#${c.oxford2024.globalRank} / 188</b> &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness${c.imfAudit?` &nbsp;·&nbsp; Book audit (IMF): <b>${f2(c.imfAudit)}</b>`:''}</div></div>
       <div class="term-grid">
         <div class="cell big"><div class="k">AI readiness</div><div class="v">${f2(c.readiness)}<small> /1.0</small></div>${delta(c.readiness,G7.readiness)}</div>
-        <div class="cell"><div class="k">Infrastructure</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
-        <div class="cell"><div class="k">Talent</div><div class="v">${f2(c.talent)}</div>${delta(c.talent,G7.talent)}</div>
-        <div class="cell"><div class="k">Governance</div><div class="v">${f2(c.governance)}</div>${delta(c.governance,G7.governance)}</div>
+        <div class="cell"><div class="k">Government vision</div><div class="v">${f2(c.government)}</div>${delta(c.government,G7.government)}</div>
+        <div class="cell"><div class="k">Infrastructure &amp; data</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
+        <div class="cell"><div class="k">Innovation &amp; integration</div><div class="v">${f2(c.innovation)}</div>${delta(c.innovation,G7.innovation)}</div>
         <div class="cell"><div class="k">Funding gap vs G7</div><div class="v">${isG7?'—':'$'+c.gap.toFixed(1)+'<small>B</small>'}</div><div class="d flat">${isG7?'benchmark':'illustrative'}</div></div>
       </div>
       <div class="term-chart"><div class="t"><span>Readiness by pillar</span><span class="lg"><span><i style="background:var(--tg)"></i>${n}</span><span><i style="background:#c9d3e6"></i>G7 avg</span><span><i style="background:#3a5a8a"></i>Africa avg</span></span></div>
-        ${bars('Overall','readiness')}${bars('Infrastructure','infra')}${bars('Talent','talent')}${bars('Governance','governance')}</div>
-      <div class="term-foot"><div class="note"><b>Preliminary estimate — full audit in the book.</b> Source: Oxford Insights, <a href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/" target="_blank" rel="noopener" style="color:var(--tg)">Government AI Readiness Index 2025</a>. Readiness = equal-weighted mean of its six pillars; Infrastructure = AI Infrastructure pillar; Talent = Development &amp; Diffusion pillar; Governance = Governance pillar; all rescaled 0–1. Funding gap is an illustrative estimate in US$ billions, not a source figure.${c.imfAudit?' Book audit figure is the IMF AI Preparedness Index (a different index) from the Bonus Report.':''}</div>
+        ${bars('Overall','readiness')}${bars('Government vision','government')}${bars('Infrastructure & data','infra')}${bars('Innovation','innovation')}</div>
+      <div class="term-foot"><div class="note"><b>${c.source==='audit'?'Audit figure.':'Source: Oxford Insights, Government AI Readiness Index 2024.'}</b> <a href="https://oxfordinsights.com/ai-readiness/" target="_blank" rel="noopener" style="color:var(--tg)">oxfordinsights.com/ai-readiness</a> · dataset via <a href="https://github.com/albadi140/goverment_ai_amplification/blob/main/data/ai_readiness_2024.csv" target="_blank" rel="noopener" style="color:var(--tg)">ai_readiness_2024.csv</a>. Readiness = Oxford Total; Government vision = Government pillar; Infrastructure &amp; data = Data &amp; Infrastructure pillar; Innovation &amp; integration = Technology Sector pillar; all ÷100. Global rank out of 188. Funding gap is an illustrative estimate in US$ billions, not a source figure.${c.imfAudit?' Book audit figure is the IMF AI Preparedness Index (a different index) from the Bonus Report.':''}</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="share" data-share>Copy link</button><a class="btn btn-gold" href="#signup">See the full breakdown in Chapter 3 — Join Waitlist</a></div></div>`;
     requestAnimationFrame(()=>requestAnimationFrame(()=>main.querySelectorAll('.c-bar i').forEach(i=>i.style.width=i.dataset.w+'%')));
     renderList(q.value);
