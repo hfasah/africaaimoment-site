@@ -128,6 +128,11 @@
   .form-msg{display:none;font-family:var(--serif);font-size:1.05rem;line-height:1.4;color:var(--navy-on-cream);padding:12px 14px;background:var(--gold-tint,#fbf3dc);border-left:3px solid var(--gold)}
   .form-msg.show{display:block}.form-msg a{color:var(--navy-on-cream);font-weight:600}
   .form-msg.err{border-color:#c0392b;background:#fdecea}
+  .wa{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;padding:13px 18px;border:1.5px solid var(--navy-on-cream);background:var(--navy-on-cream);color:var(--gold);text-decoration:none;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;border-radius:2px;transition:background .2s,transform .2s}
+  .wa:hover{background:var(--navy-700);transform:translateY(-2px)}
+  .wa svg{width:18px;height:18px;fill:#25D366;flex:none}
+  .wa-dark{border-color:var(--gold);background:transparent;color:var(--gold);display:inline-flex;margin:0}
+  .wa-dark:hover{background:rgba(240,180,41,.1)}
   .magnet .fine{font-size:.78rem;color:#6a7390;margin-top:10px}
 
 
@@ -373,6 +378,7 @@
           <button class="btn btn-navy" type="submit">Send Me The Report</button>
           <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
+        <a class="wa" href="https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Join the WhatsApp community →</a>
         <p class="fine">Joining the waitlist gets you the report now, launch-week pricing, and first notice when pre-orders open. No spam. Unsubscribe any time.</p>
       </aside>
     </div>
@@ -385,7 +391,7 @@
     <div class="sec-head rv">
       <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · Oxford Insights 2025</div>
       <h2>Check your country's<br>AI readiness gap.</h2>
-      <p>Pick a country. See where it stands on policy, infrastructure, governance and AI development — against the G7 and African averages — and how its rank moved from 2024 to 2025. Data: Oxford Insights Government AI Readiness Index 2025 (195 countries, 69 indicators, published January 2026). Sub-Saharan Africa averages 29.1 — last of nine world regions; North America averages 81.5. The book's full audit goes deeper.</p>
+      <p>Pick a country. See where it stands on policy, infrastructure, governance and AI development — against the G7 and African averages — and how its rank moved from 2024 to 2025. Data: Oxford Insights Government AI Readiness Index 2025 (195 countries, 69 indicators, published January 2026). Sub-Saharan Africa averages 29.1 — last of nine world regions — against North America's 81.5: a 52-point gap. The book's full audit goes deeper.</p>
     </div>
 
     <div class="term rv" role="region" aria-label="AI readiness explorer">
@@ -504,6 +510,7 @@
       <!-- Replace hrefs with your Amazon / Tellwell links -->
       <a class="btn btn-gold" href="#signup">Join the Pre-Order Waitlist</a>
       <a class="btn btn-ghost" href="mailto:hippolyte@africaaimoment.com?subject=Bulk%20order%20inquiry">Bulk Orders for Universities</a>
+      <a class="btn btn-ghost" href="https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD" target="_blank" rel="noopener">Join WhatsApp Community</a>
     </div>
   </div>
 </section>
@@ -529,6 +536,7 @@
         <ul>
           <li><a href="https://linkedin.com/in/hfasah" target="_blank" rel="noopener">LinkedIn · /in/hfasah</a></li>
           <li><a href="https://x.com/hfasah11" target="_blank" rel="noopener">X · @hfasah11</a></li>
+          <li><a href="https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD" target="_blank" rel="noopener">WhatsApp · Africa AI Moment community</a></li>
         </ul>
       </div>
     </div>
@@ -631,7 +639,7 @@
         try{ const k='aaim_waitlist'; const l=JSON.parse(localStorage.getItem(k)||'[]'); l.push({name,email,country,at:new Date().toISOString()}); localStorage.setItem(k,JSON.stringify(l)); ok=true; }catch(_){ ok=true; }
       }
       if(ok){ f.querySelectorAll('input,select').forEach(i=>i.style.display='none'); btn.style.display='none';
-        msg.innerHTML=`<b>You're on the list${name?', '+name:''}.</b> Your report is ready — <a href="/thank-you">download it now</a>. We'll email you the moment pre-orders open.`; msg.className='form-msg show'; }
+        msg.innerHTML=`<b>You're on the list${name?', '+name:''}.</b> Your report is ready — <a href="/thank-you">download it now</a>. We'll email you the moment pre-orders open. Want the conversation too? <a href="https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD" target="_blank" rel="noopener">Join the WhatsApp community →</a>`; msg.className='form-msg show'; }
       else { msg.textContent='Something went wrong. Email hippolyte@africaaimoment.com and we will send it by hand.'; msg.className='form-msg show err'; btn.disabled=false; btn.textContent='Send Me The Report'; }
     });
   })();
