@@ -11,7 +11,7 @@ www/.africa → africaaimoment.com redirects, clean URLs (`/thank-you`) and cach
 | Amazon / Tellwell pre-order link | not yet live: all pre-order buttons say "Join Waitlist" and point to `#signup`. When the link arrives, change the hero button, final CTA, sticky mobile bar, explorer CTA, and the thank-you upsell |
 | Author photo | drop your blue-blazer photo at `assets/hippolyte.jpg` (square crop, ≥600px) |
 | Bonus Report PDF | already built at `assets/Africa-G7-AI-Preparedness-Gap-2026.pdf`; edit `report/bonus-report.html` and re-render to change |
-| Email capture | ConvertKit (Kit): create a form, then set `data-ck-form="FORM_ID"` on `<form id="waitlist">` — the page POSTs to Kit with `first_name` and a custom field `country`. Until then, signups are stored in the visitor's browser only (open DevTools → localStorage → `aaim_waitlist`) |
+| Email capture | **Connected to Kit** form 9844601 (uid `b8e92fea6b`). The page POSTs `email_address`, `first_name`, `fields[country]` to `https://app.kit.com/forms/9844601/subscriptions`. Welcome automation copy: `emails/kit-welcome-automation.md` |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
 | Launch date | badge on the cover says `Fall 2026` |
 | Explorer data | `assets/ai-data.js` — Oxford Insights Government AI Readiness Index 2024 (Total + 3 pillars ÷100) for 61 countries, sources cited in the file header. Replace with the final audit; keep field names |
