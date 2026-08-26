@@ -21,3 +21,6 @@ www/.africa → africaaimoment.com redirects, clean URLs (`/thank-you`) and cach
 1. **Instant** — "Your report is inside" + PDF attachment/link, one-line ask to reply with the country they care about most.
 2. **Day 3** — the South Africa vs Italy stat, one paragraph, link to pre-order.
 3. **Launch day** — "It's live" + bulk-order line for universities.
+
+## Updating the explorer data
+After editing `assets/ai-data.js`, bump the `?v=` query string on its `<script>` tag in `index.html` (any new value) so browsers fetch the new file.
