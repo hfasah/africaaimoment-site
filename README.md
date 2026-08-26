@@ -14,7 +14,7 @@ www/.africa → africaaimoment.com redirects, clean URLs (`/thank-you`) and cach
 | Email capture | **Connected to Kit** form 9844601 (uid `b8e92fea6b`). The page POSTs `email_address`, `first_name`, `fields[country]` to `https://app.kit.com/forms/9844601/subscriptions`. Welcome automation copy: `emails/kit-welcome-automation.md` |
 | Praise section | swap the two placeholder blurbs for real ones — or delete the section until you have two |
 | Launch date | badge on the cover says `Fall 2026` |
-| Explorer data | `assets/ai-data.js` — Oxford Insights Government AI Readiness Index 2024 (Total + 3 pillars ÷100) for 61 countries, sources cited in the file header. Replace with the final audit; keep field names |
+| Explorer data | `assets/ai-data.js` — Oxford Insights Government AI Readiness Index 2025 (six pillars ÷100, official rank) + 2024 rank for trend; sources in the file header. Replace with the final audit; keep field names |
 
 ## Email sequence (set up in ConvertKit/Mailchimp)
 

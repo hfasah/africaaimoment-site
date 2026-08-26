@@ -163,6 +163,7 @@
   .term-head .rk b{color:var(--tg);font-weight:500}
   .tag-src{font-size:.6rem;letter-spacing:.18em;padding:3px 8px;border:1px solid var(--tg);color:var(--tg);vertical-align:middle;margin-left:10px}
   .tag-src.est{border-color:var(--tdim);color:var(--tdim)}
+  .term-grid.six{grid-template-columns:repeat(6,minmax(0,1fr))}
   .term-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--tline);border:1px solid var(--tline)}
   .term-grid .cell{background:var(--tbg);padding:14px 14px 12px}
   .cell .k{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tdim);line-height:1.3;min-height:2.6em}
@@ -187,8 +188,8 @@
   .term .btn{font-family:var(--sans)}
   .share{background:none;border:1px solid var(--tline);color:var(--tdim);font:inherit;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
   .share:hover{border-color:var(--tg);color:var(--tg)}
-  @media(max-width:980px){.term-body{grid-template-columns:1fr}.term-left{border-right:0;border-bottom:1px solid var(--tline)}.term-list{max-height:220px}.term-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media(max-width:640px){.term-main{padding:16px}.term-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.term-grid .cell:first-child{grid-column:1/-1}.term-bar{font-size:.6rem;gap:8px}.term-bar span:nth-child(2){white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.term-chart .t{flex-wrap:wrap;gap:8px}.c-row{grid-template-columns:1fr}.term-head h3{font-size:2rem}}
+  @media(max-width:980px){.term-body{grid-template-columns:1fr}.term-left{border-right:0;border-bottom:1px solid var(--tline)}.term-list{max-height:220px}.term-grid,.term-grid.six{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(max-width:640px){.term-main{padding:16px}.term-grid,.term-grid.six{grid-template-columns:repeat(2,minmax(0,1fr))}.term-grid .cell:first-child{grid-column:1/-1}.term-bar{font-size:.6rem;gap:8px}.term-bar span:nth-child(2){white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.term-chart .t{flex-wrap:wrap;gap:8px}.c-row{grid-template-columns:1fr}.term-head h3{font-size:2rem}}
 
   /* ===== BUILD ===== */
   .build{background:var(--cream);color:var(--navy-on-cream)}
@@ -382,21 +383,21 @@
 <section class="sec term-sec" id="readiness">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · Oxford Insights 2024</div>
+      <div class="eyebrow">Interactive — 54 African countries · 7 G7 nations · Oxford Insights 2025</div>
       <h2>Check your country's<br>AI readiness gap.</h2>
-      <p>Pick a country. See where it stands on government vision, infrastructure &amp; data, and innovation capacity — against the G7 average and the African average. Scores from the Oxford Insights Government AI Readiness Index 2024; the book's full audit goes deeper.</p>
+      <p>Pick a country. See where it stands on policy, infrastructure, governance and AI development — against the G7 and African averages — and how its rank moved from 2024 to 2025. Data: Oxford Insights Government AI Readiness Index 2025 (195 countries, 69 indicators, published January 2026). Sub-Saharan Africa averages 29.1 — last of nine world regions; North America averages 81.5. The book's full audit goes deeper.</p>
     </div>
 
     <div class="term rv" role="region" aria-label="AI readiness explorer">
       <div class="term-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>AAIM · AI READINESS TERMINAL · OXFORD INSIGHTS 2024 · SCALE 0–1</span>
+        <span>AAIM · AI READINESS TERMINAL · OXFORD INSIGHTS 2025 · SCALE 0–1</span>
         <span class="live">Live</span>
       </div>
       <div class="term-body">
         <div class="term-left">
           <div class="term-search">
-            <label for="cty-q">Search 61 countries</label>
+            <label for="cty-q">Search 61 countries · ranked by Oxford 2025</label>
             <div class="field"><span>&gt;</span><input id="cty-q" type="search" placeholder="Type a country…" autocomplete="off" spellcheck="false"></div>
           </div>
           <div class="term-list" id="cty-list" role="listbox"></div>
@@ -548,9 +549,9 @@
   const D = window.AI_DATA || {}; const names = Object.keys(D);
   const af = names.filter(n=>D[n].region==='Africa'), g7 = names.filter(n=>D[n].region==='G7');
   const avg = (arr,k)=>arr.reduce((s,n)=>s+D[n][k],0)/arr.length;
-  const AF = {readiness:avg(af,'readiness'),government:avg(af,'government'),infra:avg(af,'infra'),innovation:avg(af,'innovation')};
-  const G7 = {readiness:avg(g7,'readiness'),government:avg(g7,'government'),infra:avg(g7,'infra'),innovation:avg(g7,'innovation')};
-  const rankAf = [...af].sort((a,b)=>D[b].readiness-D[a].readiness);
+  const KEYS=['readiness','policy','infra','governance','development','publicSector','resilience']; const AF = Object.fromEntries(KEYS.map(k=>[k,avg(af,k)]));
+  const G7 = Object.fromEntries(KEYS.map(k=>[k,avg(g7,k)]));
+  const rankAf = [...af].sort((a,b)=>D[a].rank2025-D[b].rank2025);
   const list = document.getElementById('cty-list'), main = document.getElementById('cty-main'), q = document.getElementById('cty-q');
   const slug = s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
   const f2 = v=>v.toFixed(2);
@@ -559,9 +560,9 @@
     const group = (title, arr)=>{
       const items = arr.filter(n=>n.toLowerCase().includes(fl));
       if(!items.length) return '';
-      return `<div class="grp">${title} · ${items.length}</div>` + items.map(n=>`<button role="option" data-pick="${n}" class="${n===cur?'on':''}"><span>${n}</span><b>${f2(D[n].readiness)}</b></button>`).join('');
+      return `<div class="grp">${title} · ${items.length}</div>` + items.map(n=>`<button role="option" data-pick="${n}" class="${n===cur?'on':''}"><span>${n}</span><b>#${D[n].rank2025}</b></button>`).join('');
     };
-    list.innerHTML = group('Africa', rankAf) + group('G7', [...g7].sort((a,b)=>D[b].readiness-D[a].readiness)) || '<div class="grp">No match</div>';
+    list.innerHTML = group('Africa', rankAf) + group('G7', [...g7].sort((a,b)=>D[a].rank2025-D[b].rank2025)) || '<div class="grp">No match</div>';
   }
   let cur = null;
   function delta(v, ref){ const d=v-ref; const cls=d>0.005?'up':d<-0.005?'dn':'flat'; return `<div class="d ${cls}">${d>0?'+':''}${f2(d)} vs G7</div>`; }
@@ -574,21 +575,23 @@
   }
   function show(n, push){
     if(!D[n]) return; cur=n; const c=D[n]; const isG7=c.region==='G7';
-    const rank = isG7 ? `G7 rank <b>#${[...g7].sort((a,b)=>D[b].readiness-D[a].readiness).indexOf(n)+1} / 7</b>` : `Africa rank <b>#${rankAf.indexOf(n)+1} / ${af.length}</b>`;
+    const rank = isG7 ? `G7 rank <b>#${[...g7].sort((a,b)=>D[a].rank2025-D[b].rank2025).indexOf(n)+1} / 7</b>` : `Africa rank <b>#${rankAf.indexOf(n)+1} / ${af.length}</b>`;
+    const mv = c.rank2024 - c.rank2025; const mvTxt = mv>0?`<span style="color:var(--tgreen)">▲ ${mv} places since 2024</span>`:mv<0?`<span style="color:var(--tred)">▼ ${-mv} places since 2024</span>`:`<span>unchanged since 2024</span>`;
     const pct = Math.round(c.readiness/G7.readiness*100);
     main.innerHTML = `
-      <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Prelim.'}</span></h3></div>
-        <div class="rk">${rank} &nbsp;·&nbsp; Global <b>#${c.oxford2024.globalRank} / 188</b> &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness${c.imfAudit?` &nbsp;·&nbsp; Book audit (IMF): <b>${f2(c.imfAudit)}</b>`:''}</div></div>
-      <div class="term-grid">
-        <div class="cell big"><div class="k">AI readiness</div><div class="v">${f2(c.readiness)}<small> /1.0</small></div>${delta(c.readiness,G7.readiness)}</div>
-        <div class="cell"><div class="k">Government vision</div><div class="v">${f2(c.government)}</div>${delta(c.government,G7.government)}</div>
-        <div class="cell"><div class="k">Infrastructure &amp; data</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
-        <div class="cell"><div class="k">Innovation &amp; integration</div><div class="v">${f2(c.innovation)}</div>${delta(c.innovation,G7.innovation)}</div>
-        <div class="cell"><div class="k">Funding gap vs G7</div><div class="v">${isG7?'—':'$'+c.gap.toFixed(1)+'<small>B</small>'}</div><div class="d flat">${isG7?'benchmark':'illustrative'}</div></div>
+      <div class="term-head"><div><h3>${n}<span class="tag-src ${c.source==='audit'?'':'est'}">${c.source==='audit'?'Audit':'Oxford 2025'}</span></h3></div>
+        <div class="rk">${rank} &nbsp;·&nbsp; Global <b>#${c.rank2025} / 195</b> (2024: #${c.rank2024} / 188) &nbsp;·&nbsp; ${mvTxt} &nbsp;·&nbsp; <b>${pct}%</b> of G7 readiness${c.imfAudit?` &nbsp;·&nbsp; Book audit (IMF): <b>${f2(c.imfAudit)}</b>`:''}</div></div>
+      <div class="term-grid six">
+        <div class="cell big"><div class="k">AI readiness (6-pillar mean)</div><div class="v">${f2(c.readiness)}<small> /1.0</small></div>${delta(c.readiness,G7.readiness)}</div>
+        <div class="cell"><div class="k">Policy capacity</div><div class="v">${f2(c.policy)}</div>${delta(c.policy,G7.policy)}</div>
+        <div class="cell"><div class="k">AI infrastructure</div><div class="v">${f2(c.infra)}</div>${delta(c.infra,G7.infra)}</div>
+        <div class="cell"><div class="k">Governance</div><div class="v">${f2(c.governance)}</div>${delta(c.governance,G7.governance)}</div>
+        <div class="cell"><div class="k">Development &amp; diffusion</div><div class="v">${f2(c.development)}</div>${delta(c.development,G7.development)}</div>
+        <div class="cell"><div class="k">Public sector adoption</div><div class="v">${f2(c.publicSector)}</div>${delta(c.publicSector,G7.publicSector)}</div>
       </div>
       <div class="term-chart"><div class="t"><span>Readiness by pillar</span><span class="lg"><span><i style="background:var(--tg)"></i>${n}</span><span><i style="background:#c9d3e6"></i>G7 avg</span><span><i style="background:#3a5a8a"></i>Africa avg</span></span></div>
-        ${bars('Overall','readiness')}${bars('Government vision','government')}${bars('Infrastructure & data','infra')}${bars('Innovation','innovation')}</div>
-      <div class="term-foot"><div class="note"><b>${c.source==='audit'?'Audit figure.':'Source: Oxford Insights, Government AI Readiness Index 2024.'}</b> <a href="https://oxfordinsights.com/ai-readiness/" target="_blank" rel="noopener" style="color:var(--tg)">oxfordinsights.com/ai-readiness</a> · dataset via <a href="https://github.com/albadi140/goverment_ai_amplification/blob/main/data/ai_readiness_2024.csv" target="_blank" rel="noopener" style="color:var(--tg)">ai_readiness_2024.csv</a>. Readiness = Oxford Total; Government vision = Government pillar; Infrastructure &amp; data = Data &amp; Infrastructure pillar; Innovation &amp; integration = Technology Sector pillar; all ÷100. Global rank out of 188. Funding gap is an illustrative estimate in US$ billions, not a source figure.${c.imfAudit?' Book audit figure is the IMF AI Preparedness Index (a different index) from the Bonus Report.':''}</div>
+        ${bars('Overall','readiness')}${bars('Policy capacity','policy')}${bars('AI infrastructure','infra')}${bars('Governance','governance')}${bars('Development & diffusion','development')}${bars('Resilience','resilience')}</div>
+      <div class="term-foot"><div class="note"><b>Source: Oxford Insights, Government AI Readiness Index 2025</b> (195 countries, 69 indicators, published Jan 2026) — <a href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/" target="_blank" rel="noopener" style="color:var(--tg)">oxfordinsights.com</a>. Pillar scores and global rank are Oxford's published figures ÷100; "AI readiness" is the equal-weighted mean of the six pillars (Oxford's overall uses undisclosed weights, so it may differ by a few points). 2024 rank from the 2024 edition (188 countries); methodology changed between editions, so compare ranks, not scores.${isG7?'':` Illustrative funding gap vs G7: ~$${c.gap.toFixed(1)}B (placeholder estimate, not a source figure).`}${c.imfAudit?' Book audit figure is the IMF AI Preparedness Index (a different index) from the Bonus Report.':''}</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="share" data-share>Copy link</button><a class="btn btn-gold" href="#signup">See the full breakdown in Chapter 3 — Join Waitlist</a></div></div>`;
     requestAnimationFrame(()=>requestAnimationFrame(()=>main.querySelectorAll('.c-bar i').forEach(i=>i.style.width=i.dataset.w+'%')));
     renderList(q.value);
