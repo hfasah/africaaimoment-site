@@ -9,7 +9,8 @@ Paste-ready for Kit. Merge tags are Kit's own; `{{ subscriber.first_name | defau
 3. Action: **Send email → New email** — paste the subject and body below. Set *Send* to **immediately**.
 4. Optional but recommended: add a second step **Wait 3 days → Send email** with Email 2 (below), and a **Tag → "waitlist"** step so you can email the whole list on launch day with one broadcast.
 5. **Settings → Email → Sending address:** `hippolyte@africaaimoment.com`. Kit will ask you to verify the domain: add the DKIM/SPF records it shows to Vercel DNS (send them to me — I'll add them). Until the domain is verified, send from a verified personal address; Kit's deliverability from an unverified custom domain is poor.
-6. Turn the automation **Live**, then sign up on africaaimoment.com with a fresh address and confirm the email arrives with a working PDF link.
+6. **Form success message** (Kit → the form → Settings → *Show a success message*): paste — *Thanks! Your report is on its way — check your inbox. Join the live discussion: https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD* (the site already shows its own message; this covers anyone who reaches the form via Kit's hosted page.)
+7. Turn the automation **Live**, then sign up on africaaimoment.com with a fresh address and confirm the email arrives with a working PDF link.
 
 The form's **country** value lands in a custom field. Create it once: **Grow → Subscribers → Custom fields → Add → `country`**. Kit silently drops the value if the field doesn't exist yet.
 
@@ -36,6 +37,9 @@ A quick orientation so you get the most out of it:
 
 Want to see where your own country stands? The interactive checker covers all 54 African countries:
 https://africaaimoment.com/#readiness
+
+**Join the live discussion.** Readers, founders, and policymakers are comparing notes in the Africa AI Moment WhatsApp community:
+https://chat.whatsapp.com/GawLZsQnhshFeIbWQz5TuD
 
 I wrote this audit while finishing my book, *Africa's AI Moment: From Consumers of Technology to Creators of the Future*, and the numbers changed how I framed the whole argument. This isn't just an AI gap. If nothing changes, it becomes an income gap — one that compounds every year.
 
