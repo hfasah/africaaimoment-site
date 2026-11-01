@@ -77,7 +77,7 @@ That isn't a talent gap. On human capital, Africa's ten economies reach about 65
 
 In other words: Africa is producing people faster than it is producing the systems those people need. That is exactly the kind of gap that turns into brain drain if it isn't closed — and exactly the kind of gap that can be closed, because it's built, not born.
 
-The book is about how. Five pillars — Build, Use, Invest, Lead, Develop — and seventeen chapters on what each one looks like in education, health, agriculture, jobs, and government.
+The book is about how. Five pillars — Build, Use, Invest, Lead, Develop — and twenty chapters on what each one looks like in education, health, agriculture, jobs, and government.
 
 You'll hear from me the day pre-orders open. Until then, if the report has been useful, the best thing you can do is send it to one person in a position to act on it.
 

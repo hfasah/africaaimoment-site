@@ -8,7 +8,7 @@ These are **suggested drafts to send with a review copy**, so a busy professor o
 
 Hi {{Name}},
 
-I'm publishing *Africa's AI Moment: From Consumers of Technology to Creators of the Future* this fall — 17 chapters on how Africa moves from consuming AI to building, governing, and owning it, with an audit of 10 African economies against the G7 (attached: the audit as a 13-page report, plus the full manuscript).
+I'm publishing *Africa's AI Moment: From Consumers of Technology to Creators of the Future* this fall — 20 chapters on how Africa moves from consuming AI to building, governing, and owning it, with an audit of 10 African economies against the G7 (attached: the audit as a 13-page report, plus the full manuscript).
 
 Your work on {{their area}} shaped how I think about {{specific chapter}}, and a line from you would mean a lot to the readers I wrote it for — students, founders, policymakers, and the diaspora.
 
