@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nav.css">
 <style>
   :root{
     --navy-900:#050c1f; --navy-800:#0a1631; --navy-700:#112247; --navy-600:#1a3160;
@@ -30,7 +31,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;overflow-x:clip}
-  body{font-family:var(--sans);background:var(--navy-900);color:var(--ink);line-height:1.6;font-size:18px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{font-family:var(--sans);background:var(--navy-900);color:var(--ink);line-height:1.6;font-size:18px;-webkit-font-smoothing:antialiased;overflow-x:clip}
   img{max-width:100%;height:auto;display:block}
   a{color:inherit}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
@@ -270,6 +271,15 @@
   footer li{list-style:none;margin-bottom:8px}
   .copy{border-top:1px solid rgba(255,255,255,.06);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:var(--ink-faint)}
 
+  /* Next talk, under the speaking box */
+  .next-talk{display:flex;gap:18px;align-items:center;margin-top:18px;padding:14px;border:1px solid rgba(240,180,41,.35);background:rgba(240,180,41,.05);text-decoration:none;color:var(--ink);text-align:left;transition:background .2s}
+  .next-talk:hover{background:rgba(240,180,41,.12)}
+  .next-talk img{width:76px;flex-shrink:0;border-radius:2px}
+  .next-talk small{display:block;color:var(--gold);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+  .next-talk b{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.02em;margin:2px 0}
+  .next-talk span{font-size:.95rem;color:var(--ink-muted);line-height:1.45}
+  .next-talk i{font-style:normal;color:var(--gold);font-weight:600;white-space:nowrap}
+
   /* Sticky mobile CTA */
   .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:50;display:none;gap:8px;padding:10px 12px;background:rgba(5,12,31,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(240,180,41,.3)}
   .sticky-cta .btn{flex:1;padding:13px 10px;font-size:.78rem}
@@ -304,6 +314,28 @@
 </style>
 </head>
 <body>
+
+<a class="announce" href="/events/the-platform-canada-2026"><b>Dec 11</b> Hippolyte speaks at The Platform Canada 2026 — AI, Ethics, and Equity →</a>
+<header class="topnav">
+  <div class="in">
+    <a class="brand" href="/">Africa's <span>AI</span> Moment</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="links">
+      <li><a href="/#report">The Report</a></li>
+      <li><a href="/#readiness">Explorer</a></li>
+      <li><a href="/#chapters">Chapters</a></li>
+      <li><a href="/#author">Author</a></li>
+      <li class="dd">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Events <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu"><ul>
+          <li><a href="/events/the-platform-canada-2026"><span class="t">The Platform Canada 2026</span><span class="s">Guest speaker · Fri, Dec 11 · 5 PM ET</span></a></li>
+          <li><a class="all" href="/events">All events</a></li>
+        </ul></div>
+      </li>
+      <li><a class="cta" href="/#signup">Join Waitlist</a></li>
+    </ul>
+  </div>
+</header>
 
 <!-- ================= HERO ================= -->
 <section class="hero grain" id="top">
@@ -649,6 +681,10 @@
         </div>
         <a class="btn btn-ghost" href="mailto:info@africaaimoment.com?subject=Speaking%20inquiry">Book Hippolyte</a>
       </div>
+      <a class="next-talk" href="/events/the-platform-canada-2026">
+        <img src="assets/events/the-platform-canada-2026.jpg" alt="" width="1157" height="1400" loading="lazy">
+        <span><small>Next talk · Fri, Dec 11, 2026</small><b>The Platform Canada 2026</b>AI, Ethics, and Equity: Designing the Future Without Algorithmic Bias <i>Details →</i></span>
+      </a>
     </div>
   </div>
 </section>
@@ -697,6 +733,7 @@
           <li><a href="mailto:hippolyte@africaaimoment.com">hippolyte@africaaimoment.com</a></li>
           <li><a href="mailto:info@africaaimoment.com">info@africaaimoment.com</a> — speaking &amp; bulk orders</li>
           <li><a href="/sources">Sources for every figure</a></li>
+          <li><a href="/events">Events &amp; speaking</a></li>
           <li><a href="https://www.everybrainai.com" target="_blank" rel="noopener">everybrainai.com</a></li>
           <li>The Smart Office Podcast — <a href="https://open.spotify.com/show/5Urq26CI3QoZdJLrBpBAS7" target="_blank" rel="noopener">Spotify</a> · <a href="https://www.youtube.com/playlist?list=PLcG_z6LI9RHU7jJVFXTbo2oT1bbgvrEhc" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
@@ -818,5 +855,6 @@
     });
   })();
 </script>
+<script src="/assets/nav.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+/* Top bar shared by every page: the announcement strip, the menu, and the Events dropdown. */
+html{scroll-padding-top:76px}
+.announce{display:block;background:var(--gold,#f0b429);color:#050c1f;text-align:center;font:600 .82rem/1.4 'Source Sans 3','Helvetica Neue',Arial,sans-serif;letter-spacing:.04em;padding:9px 16px;text-decoration:none}
+.announce b{text-transform:uppercase;letter-spacing:.12em;margin-right:6px}
+.announce:hover{background:#f6cd6a}
+.topnav{position:sticky;top:0;z-index:60;background:rgba(5,12,31,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(240,180,41,.22);font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif}
+.topnav .in{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.topnav .brand{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.55rem;letter-spacing:.04em;color:#f3ecd9;text-decoration:none;white-space:nowrap}
+.topnav .brand span{color:#f0b429}
+.topnav .links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0}
+.topnav .links>li>a,.topnav .links>li>button{color:#bcc5da;text-decoration:none;font-family:inherit;font-weight:600;font-size:.8rem;line-height:1;letter-spacing:.14em;text-transform:uppercase;background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 0}
+.topnav .links>li>a:hover,.topnav .links>li>button:hover,.topnav .links>li>a[aria-current]{color:#f0b429}
+.topnav .links .cta{background:#f0b429;color:#050c1f!important;padding:11px 18px!important;border-radius:2px}
+.topnav .links .cta:hover{background:#f6cd6a}
+.topnav .dd{position:relative}
+.topnav .dd .caret{width:10px;height:10px;transition:transform .2s}
+.topnav .menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:12px;min-width:300px;visibility:hidden;opacity:0;transition:opacity .15s}
+.topnav .dd:hover .menu,.topnav .dd:focus-within .menu,.topnav .dd.open .menu{visibility:visible;opacity:1}
+.topnav .dd:hover .caret,.topnav .dd.open .caret{transform:rotate(180deg)}
+.topnav .menu ul{list-style:none;margin:0;padding:8px;background:#0a1631;border:1px solid rgba(240,180,41,.35);box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.topnav .menu a{display:block;padding:10px 12px;text-decoration:none;color:#f3ecd9}
+.topnav .menu a:hover{background:rgba(240,180,41,.1)}
+.topnav .menu .t{display:block;font-weight:600;font-size:.98rem}
+.topnav .menu .s{display:block;font-size:.8rem;color:#8a96b3;margin-top:2px}
+.topnav .menu .all{color:#f0b429;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-top:1px solid rgba(255,255,255,.07);margin-top:4px}
+.topnav .burger{display:none;background:none;border:0;color:#f3ecd9;cursor:pointer;padding:8px;margin-right:-8px}
+@media(max-width:900px){
+  .topnav .burger{display:block}
+  .topnav .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#050c1f;border-bottom:1px solid rgba(240,180,41,.3);padding:6px clamp(20px,5vw,56px) 16px}
+  .topnav.open .links{display:flex}
+  .topnav .links>li>a,.topnav .links>li>button{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:.85rem}
+  .topnav .menu{position:static;transform:none;visibility:visible;opacity:1;padding:0;min-width:0;display:none}
+  .topnav .dd.open .menu{display:block}
+  .topnav .menu ul{background:none;border:0;box-shadow:none;padding:4px 0 8px 12px}
+  .topnav .links .cta{margin-top:14px;justify-content:center;border-bottom:0!important}
+}
